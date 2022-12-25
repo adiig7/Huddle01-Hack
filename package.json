@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -18,6 +20,7 @@
     "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.20",
+    "sass": "^1.57.1",
     "tailwindcss": "^3.2.4",
     "vite": "^4.0.0"
   }

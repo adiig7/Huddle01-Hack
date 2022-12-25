@@ -1,11 +1,15 @@
 import React from "react";
+import MainPage from "./components/MainPage";
+import styles from "./style";
 
 export default function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline text-amber-400">
-        Hewwloooooo
-      </h1>
+    <div className="bg-primary w-full overflow-hidden">
+      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+        <div className={`${styles.boxWidth}`}>
+          <MainPage />
+        </div>
+      </div>
     </div>
   );
 }
