@@ -27,7 +27,7 @@ const InitPage = () => {
                             // value={product.title}
                             // onChange={(e) => setProduct({ ...product, title: e.target.value })}
                             placeholder="Enter Your Name"
-                            className="outline-none px-4 py-2 font-medium rounded-[10px] w-150px dark:bg-[#363952] text-white"
+                            className="outline-none px-4 py-2 font-medium rounded-[10px] w-150px text-white feedback-card"
                             required
                         ></input>
                         <button
