@@ -19,7 +19,7 @@ contract HuddleHack{
 
     struct User{
         uint id;
-        string name;
+        string username;
         address userWallet;
     }
 
@@ -32,8 +32,10 @@ contract HuddleHack{
 
     mapping (uint => Doctor) public doctors;
     mapping (uint => User) public users;
+    mapping (address => string) public userNames;
+    mapping(address => bool) public userExistsMap;
 
-    mapping(uint => uint[]) public appointmentsForDoctor;
+    mapping(address => Appointment[]) public appointmentsForDoctor;
 
     function getDoctor(uint _id) view public returns(Doctor memory){
         return doctors[_id];
@@ -43,19 +45,38 @@ contract HuddleHack{
         return users[_id];
     }
 
-    function addDoctor() public {
-        
+    function getUsername() view public returns(string memory){
+        return userNames[msg.sender];
     }
 
-    function addUser() public{
+    function getAppointmentForADoctor(address _addressDoc) view public returns(Appointment[] memory){
+        return appointmentsForDoctor[_addressDoc];
+    }
+
+    function addDoctor(string memory _category, string memory _description) public {
+        require(userExistsMap[msg.sender] == true, "User doesn't exists");
+        string memory userName = getUsername();
+        doctors[doctorsId] = Doctor(doctorsId, userName, _category, msg.sender, _description, 0, false);
+    }
+
+    function addUser(string memory _name) public{
+        require(userExistsMap[msg.sender] == false, "User already exists");
+        users[usersId] = User(usersId, _name, msg.sender);
+        userNames[msg.sender] = _name;
+        userExistsMap[msg.sender] = true;
+        usersId += 1;
+    }
+
+    function addAppointment() public{
 
     }
 
     function changeAvailability(uint _id) public {
-
+        Doctor storage doctor = doctors[_id];
+        doctor.isAvailable = !doctor.isAvailable;
     }
 
-    // function getAppointment(uint _id) public returns(Appointment[] memory){
-    //     return appointmentsForDoctor[_id];
-    // }
+    function changePrice(uint _id) public {
+        
+    }
 }
