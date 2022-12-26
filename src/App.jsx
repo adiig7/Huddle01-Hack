@@ -2,6 +2,7 @@ import React from "react";
 
 import NavBar from "./components/NavBar";
 import DashBoard from "./components/DashBoard";
+
 import styles from "./style";
 
 export default function App() {

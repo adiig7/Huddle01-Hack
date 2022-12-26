@@ -8,11 +8,11 @@ export const navLinks = [
     title: "My Appointments",
   },
   {
-    id: "team",
-    title: "Team",
+    id: "my profile",
+    title: "My Profile",
   },
   {
-    id: "source code",
-    title: "Source Code",
+    id: "team",
+    title: "Team",
   },
 ];
