@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import './polyfills';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import '@rainbow-me/rainbowkit/styles.css';
 import {
@@ -13,6 +14,8 @@ import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import InitPage from './components/InitPage';
+import Team from './components/Team';
 
 const { chains, provider } = configureChains(
   [mainnet, polygon, optimism, arbitrum],
@@ -35,10 +38,18 @@ const wagmiClient = createClient({
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <Router>
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-        <App />
+        <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/auth" element={<InitPage />} />
+            
+        </Routes>
+        
          </RainbowKitProvider>
-    </WagmiConfig>
+      </WagmiConfig>
+      </Router>
   </React.StrictMode>,
 )
