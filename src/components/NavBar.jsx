@@ -3,6 +3,7 @@ import React from "react";
 import { navLinks } from "../constants";
 import close from "../assets/close.svg";
 import menu from "../assets/menu.svg";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const NavBar = () => {
   const [active, setActive] = useState("Home");
@@ -15,6 +16,7 @@ const NavBar = () => {
       <h1 className="text-white nav-heading-1 text-4xl text-gradient font-bold">
         Tech
       </h1>
+
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
           <li
@@ -28,6 +30,8 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
+                    <ConnectButton />
+
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img
           src={toggle ? close : menu}
@@ -53,6 +57,7 @@ const NavBar = () => {
               </li>
             ))}
           </ul>
+          
         </div>
       </div>
     </nav>
