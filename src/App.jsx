@@ -1,5 +1,7 @@
 import React from "react";
-import MainPage from "./components/MainPage";
+
+import NavBar from "./components/NavBar";
+import DashBoard from "./components/DashBoard";
 import styles from "./style";
 
 export default function App() {
@@ -7,7 +9,12 @@ export default function App() {
     <div className="bg-primary w-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
-          <MainPage />
+          <NavBar />
+        </div>
+      </div>
+      <div className={`bg-primary h-screen ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
+          <DashBoard />
         </div>
       </div>
     </div>

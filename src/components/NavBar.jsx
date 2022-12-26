@@ -4,7 +4,7 @@ import { navLinks } from "../constants";
 import close from "../assets/close.svg";
 import menu from "../assets/menu.svg";
 
-const MainPage = () => {
+const NavBar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   return (
@@ -59,4 +59,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default NavBar;
