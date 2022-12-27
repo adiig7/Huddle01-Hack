@@ -27,10 +27,10 @@ const DoctorCard = (props) => {
           <h4 className="font-poppins font-semibold text-[18px] leading-[32px] text-white">
             {props.price}
           </h4>
-          <div className="flex flex-row ml-24">
-            <img src={props.rate} className="w-[32px] h-[32px] " />
-            <img src={props.rate} className="w-[32px] h-[32px] " />
-            <img src={props.rate} className="w-[32px] h-[32px] " />
+          <div className="flex flex-row ml-36">
+            <h4 className="font-poppins  text-[18px] leading-[32px] text-white">
+              {props.rate}
+            </h4>
           </div>
         </div>
       </div>
