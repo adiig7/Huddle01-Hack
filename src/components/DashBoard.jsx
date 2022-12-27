@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../style";
 import DoctorCard from "./DoctorCard";
 import people01 from "../assets/people01.png";
+import NavBar from "./NavBar";
 
 const DashBoard = () => {
   return (
