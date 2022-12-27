@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { mainnet, polygon, optimism, arbitrum } from "wagmi/chains";
+import { mainnet, polygon, optimism, arbitrum, polygonMumbai } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import InitPage from "./components/InitPage";
@@ -16,7 +16,7 @@ import Team from "./components/Team";
 import DoctorDetails from "./components/DoctorDetails";
 
 const { chains, provider } = configureChains(
-  [mainnet, polygon, optimism, arbitrum],
+  [polygonMumbai],
   [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
 );
 
@@ -40,7 +40,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/" element={<App />} />
             <Route path="/team" element={<Team />} />
             <Route path="/auth" element={<InitPage />} />
-            <Route path="/det" element={<DoctorDetails />} />
+            <Route path="/doc/:docId" element={<DoctorDetails />} />
           </Routes>
         </RainbowKitProvider>
       </WagmiConfig>

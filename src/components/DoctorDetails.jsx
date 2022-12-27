@@ -1,8 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../style";
 import people01 from "../assets/people01.png";
+import ABI from "./../utils/abi"
+import { useParams } from "react-router-dom";
+import { useAccount, useSigner, useContract, useProvider} from "wagmi";
 
+let category, description, price;
 const DoctorDetails = () => {
+
+  const [docName, setDocName] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(0);
+
+
+  const { address } = useAccount();
+  const { docId } = useParams();
+  const provider = useProvider();
+
+  const { data: signer } = useSigner();
+  const contractAddress = "0x598530f0fd575BDBF2DA3aDB136A84047AD65359"
+  const contractABI = ABI;
+
+  //0x1C35A430438F127529dD141CABA7Db27E05a33B9
+  const contract = useContract({
+    address: contractAddress,
+    abi: contractABI,
+    signerOrProvider: signer || provider
+})
+  const getDoctorDetail = async () => {
+    try {
+      console.log(contract);
+      const doctorData = await contract.getDoctor(docId);
+      setDocName(doctorData.name)
+      setCategory(doctorData.category)
+      setPrice(doctorData.price)
+      setDescription(doctorData.description)
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+  }
+
+  useEffect(() => {
+    getDoctorDetail();
+  }, [docName, category])
+
   return (
     <div className="bg-primary w-full h-screen overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
@@ -10,7 +54,7 @@ const DoctorDetails = () => {
           <div className="absolute z-[0] w-[40%] h-[45%] top-0 pink__gradient" />
           <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
           <h1 className="text-white h-[150px] nav-heading text-7xl text-center mt-6 text-gradient font-bold">
-            Doctor Detail
+            Doctor's Portfolio
           </h1>
 
           <div className="relative mx-auto grid grid-cols-1 mt-14 sm:mt-0 gap-[200px] lg:flex lg:justify-center">
@@ -26,7 +70,7 @@ const DoctorDetails = () => {
               <p className="mb-4 font-semibold text-white">Category</p>
               <div className="flex space-x-2">
                 <a className="bg-blue-gradient font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900">
-                  Therapist
+                  {category}
                 </a>
               </div>
             </div>
@@ -34,25 +78,28 @@ const DoctorDetails = () => {
               <div className="bg-[#FFFFFF] rounded-[20px] p-6 w-full mb-4 dark:bg-[#33354B]">
                 <div className="grid grid-cols-12">
                   <p className="mb-2 text-[18px] col-span-11 font-bold text-gradient dark:text-white md:text-[25px]">
-                    Herman Jensen
+                    {docName}
                   </p>
                 </div>
                 <div className="flex flex-row">
-                  <p className="text-[20px] text-white font-bold mb-4">$200</p>
+                  <p className="text-[20px] text-white font-bold mb-4">$</p>
                 </div>
                 <p className="mb-2 font-semibold text-white">Description</p>
                 <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
-                  Hey there! I am your therapist Hermn Jensen.We all need a
-                  little discipline. Exercise is my discipline
+                  {description}
                 </p>
                 <p className="mb-2 font-semibold text-white"> Availability</p>
                 <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
-                  10AM to 5PM IST
+                  <a a className = "bg-emerald-300 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900" >
+                  {category}
+                </a>
                 </p>
                 <p className="mb-2 font-semibold text-white">Rating</p>
                 <p className="mb-8 max-w-[450px] text-[#ADB0C9]">4.8/5</p>
               </div>
-              <button className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center ">
+              <button
+                className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
+                onClick ={getDoctorDetail}>
                 Start meeting
               </button>
             </div>
