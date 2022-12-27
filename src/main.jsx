@@ -1,55 +1,49 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
-import './polyfills';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+import "./polyfills";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import '@rainbow-me/rainbowkit/styles.css';
-import {
-  getDefaultWallets,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-import InitPage from './components/InitPage';
-import Team from './components/Team';
+import "@rainbow-me/rainbowkit/styles.css";
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { mainnet, polygon, optimism, arbitrum } from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
+import InitPage from "./components/InitPage";
+import Team from "./components/Team";
+import DoctorDetails from "./components/DoctorDetails";
 
 const { chains, provider } = configureChains(
   [mainnet, polygon, optimism, arbitrum],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider()
-  ]
+  [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'My RainbowKit App',
-  chains
+  appName: "My RainbowKit App",
+  chains,
 });
 
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
-  provider
-})
+  provider,
+});
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
-    <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
-        <Routes>
+      <WagmiConfig client={wagmiClient}>
+        <RainbowKitProvider chains={chains}>
+          <Routes>
             <Route path="/" element={<App />} />
             <Route path="/team" element={<Team />} />
             <Route path="/auth" element={<InitPage />} />
-            
-        </Routes>
-        
-         </RainbowKitProvider>
+            <Route path="/det" element={<DoctorDetails />} />
+          </Routes>
+        </RainbowKitProvider>
       </WagmiConfig>
-      </Router>
-  </React.StrictMode>,
-)
+    </Router>
+  </React.StrictMode>
+);
