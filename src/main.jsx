@@ -14,6 +14,7 @@ import { publicProvider } from "wagmi/providers/public";
 import InitPage from "./components/InitPage";
 import Team from "./components/Team";
 import DoctorDetails from "./components/DoctorDetails";
+import MyProfile from "./components/MyProfile";
 
 const { chains, provider } = configureChains(
   [mainnet, polygon, optimism, arbitrum],
@@ -41,6 +42,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/team" element={<Team />} />
             <Route path="/auth" element={<InitPage />} />
             <Route path="/det" element={<DoctorDetails />} />
+            <Route path="/prof" element={<MyProfile />} />
           </Routes>
         </RainbowKitProvider>
       </WagmiConfig>
