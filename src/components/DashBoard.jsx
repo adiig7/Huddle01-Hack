@@ -2,9 +2,7 @@ import React from "react";
 import styles from "../style";
 import DoctorCard from "./DoctorCard";
 import people01 from "../assets/people01.png";
-import people02 from "../assets/people02.png";
-import people03 from "../assets/people03.png";
-import star from "../assets/star.svg";
+import NavBar from "./NavBar";
 
 const DashBoard = () => {
   return (
@@ -24,7 +22,7 @@ const DashBoard = () => {
             category="Therapist"
             price="$200"
             desc="Hey there! I am your therapist Hermn Jensen.We all need a little discipline. Exercise is my discipline"
-            rate={star}
+            rate="4.8/5"
           />
           <DoctorCard
             image={people01}
@@ -32,7 +30,7 @@ const DashBoard = () => {
             category="Therapist"
             price="$200"
             desc="Hey there! I am your therapist Hermn Jensen.We all need a little discipline. Exercise is my discipline"
-            rate={star}
+            rate="4.8/5"
           />
           <DoctorCard
             image={people01}
@@ -40,7 +38,7 @@ const DashBoard = () => {
             category="Therapist"
             price="$200"
             desc="Hey there! I am your therapist Hermn Jensen.We all need a little discipline. Exercise is my discipline"
-            rate={star}
+            rate="4.8/5"
           />
         </div>
       </div>
