@@ -1,6 +1,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import React from "react";
 import styles from "../style";
+// import ABI from './../utils/'
 
 const InitPage = () => {
   return (
@@ -32,9 +33,13 @@ const InitPage = () => {
             ></input>
             <button
               type="submit"
-              className="w-full ml-auto mr-auto px-12 py-2 rounded-[10px] bg-gradient-to-r from-blue-500 to-white-500 text-white text-[18px] font-semibold hover:opacity-90 disabled:bg-[#595B73] disabled:pointer-events-none sm:min-w-[230px] sm:w-auto transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 hover:bg-indigo-500 duration-300"
+              className="w-full ml-auto
+               mr-auto px-12 py-2 rounded-[10px] bg-blue-gradient 
+              text-[20px] font-semibold sm:min-w-[230px] 
+               sm:w-auto text-white
+               "
             >
-              Put up for sale!
+              Submit
             </button>
           </div>
         </div>
