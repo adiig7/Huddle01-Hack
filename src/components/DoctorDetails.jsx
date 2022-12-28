@@ -19,8 +19,10 @@ const DoctorDetails = () => {
   const { docId } = useParams();
   const provider = useProvider();
 
+
+  // 0x8816A7f90Ec092279f2289b362Edbf944322b53d
   const { data: signer } = useSigner();
-  const contractAddress = "0x598530f0fd575BDBF2DA3aDB136A84047AD65359"
+  const contractAddress = "0x8816A7f90Ec092279f2289b362Edbf944322b53d"
   const contractABI = ABI;
 
   //0x1C35A430438F127529dD141CABA7Db27E05a33B9

@@ -1,10 +1,62 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from "../style";
 import DoctorCard from "./DoctorCard";
 import people01 from "../assets/people01.png";
-import NavBar from "./NavBar";
+import ABI from "./../utils/abi"
+import { useSigner, useContract, useProvider } from "wagmi";
 
 const DashBoard = () => {
+  const [doctors, setDoctors] = useState([]);
+
+  const { data: signer } = useSigner();
+  const contractAddress = "0x8816A7f90Ec092279f2289b362Edbf944322b53d"
+  const contractABI = ABI;
+
+  const provider = useProvider();
+
+  //0x8816A7f90Ec092279f2289b362Edbf944322b53d
+  const contract = useContract({
+    address: contractAddress,
+    abi: contractABI,
+    signerOrProvider: signer || provider
+})
+  const getNumberOfDocs = async () => {
+    const docsCount = await contract.doctorsId();
+    return docsCount.toNumber()
+  }
+
+  const getSingleDocData = async (id) => {
+    const docData = await contract.getDoctor(id);
+    const parsedData = {
+      id: docData.id,
+      name: docData.name,
+      pfp: docData.pfp,
+      category: docData.category,
+      address: docData.doctorWallet,
+      description: docData.description,
+      price: docData.price.toNumber(),
+      rating: docData.rating.toNumber(),
+      isAvailable: docData.isAvailable
+    }
+    return parsedData;
+  }
+
+  const getAllDocsData = async () => {
+    const totalDocs = await getNumberOfDocs()
+    const promises = [];
+    console.log(totalDocs + " totalDocs");
+    for (let id = 0; id < totalDocs; id++){
+      const requestsPromise = getSingleDocData(id);
+      promises.push(requestsPromise)
+    }
+    const _doctors = await Promise.all(promises);
+    setDoctors(_doctors)
+  }
+
+  useEffect(() => {
+    getAllDocsData();
+  })
+
   return (
     <section
       id="home"
@@ -16,30 +68,22 @@ const DashBoard = () => {
         <div
           className={`flex lg:flex-row md:flex-col sm: flex-col justify-end items-center gap-2.5 ${styles.boxWidth} `}
         >
-          <DoctorCard
-            image={people01}
-            name="Herman Jensen"
-            category="Therapist"
-            price="$200"
-            desc="Hey there! I am your therapist Hermn Jensen.We all need a little discipline. Exercise is my discipline"
-            rate="4.8/5"
-          />
-          <DoctorCard
-            image={people01}
-            name="Herman Jensen"
-            category="Therapist"
-            price="$200"
-            desc="Hey there! I am your therapist Hermn Jensen.We all need a little discipline. Exercise is my discipline"
-            rate="4.8/5"
-          />
-          <DoctorCard
-            image={people01}
-            name="Herman Jensen"
-            category="Therapist"
-            price="$200"
-            desc="Hey there! I am your therapist Hermn Jensen.We all need a little discipline. Exercise is my discipline"
-            rate="4.8/5"
-          />
+          {doctors ? (
+              doctors.map((doctor) => {
+                return (
+                  <DoctorCard
+                    image={people01}
+                    name={doctor.name}
+                    category={doctor.category}
+                    price={doctor.price}
+                    desc={doctor.description}
+                    rate={doctor.rating}
+                  />
+                );
+              })
+            ) : (
+              <a>No researches present</a>
+            )}
         </div>
       </div>
     </section>
