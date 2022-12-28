@@ -1,9 +1,38 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import React from "react";
+import React, { useState } from "react";
+import { useAccount } from "wagmi";
 import styles from "../style";
-// import ABI from './../utils/'
+import ABI from "./../utils/abi"
+import { useSigner, useContract, useProvider } from "wagmi";
+import { redirect } from "react-router-dom";
 
-const InitPage = () => {
+const InitPage = () => {  
+  const [name, setName] = useState("");
+  const { address } = useAccount();
+
+  const { data: signer } = useSigner();
+  const contractAddress = "0x8816A7f90Ec092279f2289b362Edbf944322b53d"
+  const contractABI = ABI;
+
+  const provider = useProvider();
+
+  //0x8816A7f90Ec092279f2289b362Edbf944322b53d
+  const contract = useContract({
+    address: contractAddress,
+    abi: contractABI,
+    signerOrProvider: signer || provider
+  })
+
+  const submitNameForUser =async () => {
+    if (address) {
+      await contract.addUser(name);
+      console.log("added successfully");
+      return redirect("/");
+    } else {
+      console.log("Not connected");
+    }
+  }
+
   return (
     <div className="bg-primary w-full h-screen overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
@@ -22,7 +51,8 @@ const InitPage = () => {
               id="name"
               type="text"
               // value={product.title}
-              // onChange={(e) => setProduct({ ...product, title: e.target.value })}
+              required
+              onChange={(e) => setName(e.target.value)}
               placeholder="Enter Your Name"
               className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[280px] text-white feedback-card sm:min-w-[230px] 
               sm:w-auto"
@@ -34,6 +64,7 @@ const InitPage = () => {
               text-[20px] font-semibold sm:min-w-[230px] 
                sm:w-auto text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center
                "
+              onClick={submitNameForUser}
             >
               Submit
             </button>

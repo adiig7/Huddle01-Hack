@@ -38,7 +38,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider chains={chains}>
           <Routes>
-            <Route path="/" element={<App />} />
+            <Route path="/" element={<InitPage />} />
+            <Route path="/home" element={<App />} />
             <Route path="/team" element={<Team />} />
             <Route path="/auth" element={<InitPage />} />
             <Route path="/doc/:docId" element={<DoctorDetails />} />
