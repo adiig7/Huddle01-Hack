@@ -5,13 +5,14 @@ import ABI from "./../utils/abi"
 import { useParams } from "react-router-dom";
 import { useAccount, useSigner, useContract, useProvider} from "wagmi";
 
-let category, description, price;
 const DoctorDetails = () => {
 
   const [docName, setDocName] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
+  const [availability, setAvailability] = useState(false)
+  const [rating, setRating] = useState(0);
 
 
   const { address } = useAccount();
@@ -36,16 +37,16 @@ const DoctorDetails = () => {
       setCategory(doctorData.category)
       setPrice(doctorData.price)
       setDescription(doctorData.description)
-      
+      setAvailability(doctorData.isAvailable)
+      setRating(doctorData.rating)
     } catch (error) {
       console.log(error);
     }
-   
   }
 
   useEffect(() => {
     getDoctorDetail();
-  }, [docName, category])
+  }, [docName, category, availability, rating])
 
   return (
     <div className="bg-primary w-full h-screen overflow-hidden">
@@ -82,20 +83,28 @@ const DoctorDetails = () => {
                   </p>
                 </div>
                 <div className="flex flex-row">
-                  <p className="text-[20px] text-white font-bold mb-4">$</p>
+                  <p className="text-[20px] text-white font-bold mb-4">$ {Number(price)}</p>
                 </div>
                 <p className="mb-2 font-semibold text-white">Description</p>
                 <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
                   {description}
                 </p>
                 <p className="mb-2 font-semibold text-white"> Availability</p>
-                <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
+                {availability === true ?
+                  <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
                   <a a className = "bg-emerald-300 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900" >
-                  {category}
+                  Available now
                 </a>
-                </p>
+                  </p>
+                  :
+                  <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
+                  <a a className = "bg-red-500 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900" >
+                  Not available
+                </a>
+                </p> 
+                }
                 <p className="mb-2 font-semibold text-white">Rating</p>
-                <p className="mb-8 max-w-[450px] text-[#ADB0C9]">4.8/5</p>
+                <p className="mb-8 max-w-[450px] text-[#ADB0C9]">{Number(rating)} / 5</p>
               </div>
               <button
                 className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
