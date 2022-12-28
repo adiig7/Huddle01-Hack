@@ -14,7 +14,7 @@ const MyProfile = () => {
           </div>
         </div>
       </div>
-      <div className="bg-primary w-full h-screen overflow-hidden">
+      <div className="bg-primary w-full h-full">
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
             <div className="absolute z-[0] w-[40%] h-[45%] top-0 pink__gradient" />
