@@ -5,10 +5,12 @@ import styles from "../style";
 import ABI from "./../utils/abi"
 import { useSigner, useContract, useProvider } from "wagmi";
 import { redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const InitPage = () => {  
   const [name, setName] = useState("");
   const { address } = useAccount();
+  const history = useHistory()
 
   const { data: signer } = useSigner();
   const contractAddress = "0x8816A7f90Ec092279f2289b362Edbf944322b53d"
@@ -27,7 +29,7 @@ const InitPage = () => {
     if (address) {
       await contract.addUser(name);
       console.log("added successfully");
-      return redirect("/");
+      history.push("/home") 
     } else {
       console.log("Not connected");
     }
