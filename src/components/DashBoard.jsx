@@ -55,7 +55,7 @@ const DashBoard = () => {
 
   useEffect(() => {
     getAllDocsData();
-  })
+  }, [])
 
   return (
     <section
