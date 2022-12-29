@@ -43,7 +43,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/team" element={<Team />} />
             <Route path="/auth" element={<InitPage />} />
             <Route path="/doc/:docId" element={<DoctorDetails />} />
-            <Route path="/prof" element={<MyProfile />} />
+            <Route path="/updateprofile" element={<MyProfile />} />
           </Routes>
         </RainbowKitProvider>
       </WagmiConfig>

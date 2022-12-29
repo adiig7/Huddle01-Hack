@@ -1,15 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { navLinks } from "../constants";
 import close from "../assets/close.svg";
 import menu from "../assets/menu.svg";
+import { useNavigate } from "react-router-dom";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const NavBar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+
+  const navigateTo = useNavigate()
+  
+  const goToPage = (destination, title) => {
+     setActive(title)
+     console.log(title);
+     console.log(active + " active");
+    navigateTo(`/${destination}`)
+  }
+
+  useEffect(() => {
+  }, [active])
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar">
+    <nav className="w-full flex py-6 justify-between items-center navbar button-index">
       <h1 className="text-white nav-heading text-4xl text-gradient font-bold">
         med
       </h1>
@@ -25,11 +38,11 @@ const NavBar = () => {
           <li
             key={nav.id}
             className={`font-poppins text-white font-normal cursor-pointer text-[16px] mr-10 ${
-              active === nav.title ? "text-white" : "text-dimWhite"
+              active === nav.title ? "text-cyan-300" : "text-dimWhite"
             }`}
-            onClick={() => setActive(nav.title)}
+            onClick={() => goToPage(nav.link, nav.title)}
           >
-            <a href={`#${nav.id}`}>{nav.title}</a>
+            <a>{nav.title}</a>
           </li>
         ))}
       </ul>

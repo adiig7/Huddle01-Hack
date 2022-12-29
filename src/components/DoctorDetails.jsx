@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../style";
 import people01 from "../assets/people01.png";
 import ABI from "./../utils/abi"
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useAccount, useSigner, useContract, useProvider} from "wagmi";
 
 const DoctorDetails = () => {
@@ -11,14 +11,15 @@ const DoctorDetails = () => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
+  const [docAddress, setDocAddress] = useState(0x00);
   const [availability, setAvailability] = useState(false)
   const [rating, setRating] = useState(0);
-
 
   const { address } = useAccount();
   const { docId } = useParams();
   const provider = useProvider();
 
+  const navigateTo = useNavigate()
 
   // 0x8816A7f90Ec092279f2289b362Edbf944322b53d
   const { data: signer } = useSigner();
@@ -33,11 +34,11 @@ const DoctorDetails = () => {
 })
   const getDoctorDetail = async () => {
     try {
-      console.log(contract);
       const doctorData = await contract.getDoctor(docId);
       setDocName(doctorData.name)
       setCategory(doctorData.category)
       setPrice(doctorData.price)
+      setDocAddress(doctorData.doctorWallet)
       setDescription(doctorData.description)
       setAvailability(doctorData.isAvailable)
       setRating(doctorData.rating)
@@ -46,6 +47,9 @@ const DoctorDetails = () => {
     }
   }
 
+  const navigateToUpdateProfile = () => {
+    navigateTo('/my')
+  }
   useEffect(() => {
     getDoctorDetail();
   }, [docName, category, availability, rating])
@@ -108,11 +112,15 @@ const DoctorDetails = () => {
                 <p className="mb-2 font-semibold text-white">Rating</p>
                 <p className="mb-8 max-w-[450px] text-[#ADB0C9]">{Number(rating)} / 5</p>
               </div>
-              <button
+              {(address !== docAddress) ? <button
                 className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
                 onClick ={getDoctorDetail}>
                 Start meeting
-              </button>
+              </button> : <button
+                className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
+                onClick ={navigateToUpdateProfile}>
+                Update My Profile
+              </button>}
             </div>
           </div>
         </div>
