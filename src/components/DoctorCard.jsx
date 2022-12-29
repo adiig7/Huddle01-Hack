@@ -1,4 +1,4 @@
-import React from "react";  
+import React from "react";
 
 const DoctorCard = (props) => {
   return (
@@ -22,10 +22,14 @@ const DoctorCard = (props) => {
           {props.desc}
         </p>
         <div className="flex flex-row ml-2">
-          <h4 className="font-poppins font-semibold text-[18px] leading-[32px] text-white">
-           $ {props.price}
-          </h4>
+          <div className="flex flex-row gap-2">
+            <img src={props.matic}></img>
+            <h4 className="font-poppins font-semibold text-[18px] leading-[32px] text-white">
+              {props.price}
+            </h4>
+          </div>
           <div className="flex flex-row ml-36">
+            <img src={props.star} className="w-[30px] h-[30px] mr-2"></img>
             <h4 className="font-poppins  text-[18px] leading-[32px] text-white">
               {props.rate} / 5
             </h4>
