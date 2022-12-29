@@ -71,9 +71,11 @@ const InitPage = () => {
 
           <div className="w-[100%] flex flex-col items-center justify-center m-auto  mt-[80px]">
             <ConnectButton />
+          </div>
+          <div className="justify-center m-auto items-center flex mt-6">
             <button
               type="submit"
-              className="w-full m-auto mt-6
+              className="w-full button-index
                 px-12 py-2 rounded-[10px] bg-blue-gradient 
               text-[20px] font-semibold sm:min-w-[230px] 
                sm:w-auto text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center
