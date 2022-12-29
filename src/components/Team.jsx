@@ -10,13 +10,6 @@ import NavBar from "./NavBar";
 const Team = () => {
   return (
     <>
-      <div className="bg-[#10213B]  w-full overflow-hidden">
-        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-          <div className={`${styles.boxWidth}`}>
-            <NavBar />
-          </div>
-        </div>
-      </div>
       <div className="bg-primary w-full lg:h-screen sm:h-full">
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>

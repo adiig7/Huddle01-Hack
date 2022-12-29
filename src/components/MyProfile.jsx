@@ -7,13 +7,6 @@ import Category from "./Category";
 const MyProfile = () => {
   return (
     <>
-      <div className="bg-[#10213B] w-full">
-        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-          <div className={`${styles.boxWidth}`}>
-            <NavBar />
-          </div>
-        </div>
-      </div>
       <div className="bg-primary w-full h-full">
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
