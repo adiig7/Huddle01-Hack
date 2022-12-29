@@ -7,7 +7,7 @@ import Category from "./Category";
 const MyProfile = () => {
   return (
     <>
-      <div className="bg-primary w-full">
+      <div className="bg-[#10213B] w-full">
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
             <NavBar />
@@ -19,7 +19,7 @@ const MyProfile = () => {
           <div className={`${styles.boxWidth}`}>
             <div className="absolute z-[0] w-[40%] h-[45%] top-0 pink__gradient" />
             <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
-            <h1 className="text-white h-[150px] nav-heading text-6xl text-center mt-2 text-gradient font-bold">
+            <h1 className="text-white h-[150px] nav-heading text-6xl text-center mt-6 text-gradient font-bold">
               My Arena
             </h1>
             <div className="relative mx-auto grid grid-cols-1 mt-2 sm:mt-0 gap-[200px] lg:flex lg:justify-center">
