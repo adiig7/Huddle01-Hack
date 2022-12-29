@@ -2,11 +2,12 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import React, { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import styles from "../style";
-import ABI from "./../utils/abi"
+import ABI from "./../utils/abi";
 import { useSigner, useContract, useProvider } from "wagmi";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.svg";
 
-const InitPage = () => {  
+const InitPage = () => {
   const [name, setName] = useState("");
   const [isUserRegistered, setIsUserRegistered] = useState(false);
 
@@ -15,7 +16,7 @@ const InitPage = () => {
   const navigateTo = useNavigate();
 
   const { data: signer } = useSigner();
-  const contractAddress = "0x8816A7f90Ec092279f2289b362Edbf944322b53d"
+  const contractAddress = "0x8816A7f90Ec092279f2289b362Edbf944322b53d";
   const contractABI = ABI;
 
   const provider = useProvider();
@@ -24,45 +25,30 @@ const InitPage = () => {
   const contract = useContract({
     address: contractAddress,
     abi: contractABI,
-    signerOrProvider: signer || provider
-  })
+    signerOrProvider: signer || provider,
+  });
 
-  const checkUserExists = async () => {
-    const userRegistrationStatus = await contract.checkUserExists()
-    setIsUserRegistered(userRegistrationStatus)
-    console.log(userRegistrationStatus);
-  }
-
-  const account = useAccount({
-    onConnect({ address, connector, isReconnected }) {
-      console.log('Connected', { address, connector, isReconnected })
-      checkUserExists()
-    },
-  })
-
-  const submitNameForUser =async () => {
+  const submitNameForUser = async () => {
     if (address) {
       await contract.addUser(name);
       console.log("added successfully");
-      navigateTo('/home')
+      navigateTo("/home");
     } else {
       console.log("Not connected");
     }
-  }
+  };
 
   useEffect(() => {
   }, [isUserRegistered])
   return (
-    <div className="bg-primary w-full h-screen overflow-hidden">
+    <div className="bg-primary w-full h-screen">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
           <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
-          <h1 className="text-white h-[150px] nav-heading text-7xl text-center mt-6 text-gradient font-bold">
-            User Registration
-          </h1>
+          <img src={logo} className="w-[150px] h-[150px] m-auto mt-4"></img>
 
-          <div className="w-[100%] flex flex-col items-center justify-center m-auto mt-20">
+          <div className="w-[100%] flex flex-col items-center justify-center m-auto mt-10">
             <ConnectButton />
           </div>
           {console.log(isUserRegistered) + " dha"}
