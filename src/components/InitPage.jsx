@@ -1,21 +1,20 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import React, { useEffect, useState } from "react";
-import { useAccount } from "wagmi";
 import styles from "../style";
 import ABI from "./../utils/abi"
-import { useSigner, useContract, useProvider } from "wagmi";
+import { useSigner, useContract, useProvider, useAccount } from "wagmi";
 import { useNavigate } from 'react-router-dom';
 
 const InitPage = () => {
   const [name, setName] = useState("");
-  const [isUserRegistered, setIsUserRegistered] = useState(false);
-
-
+  const [isUserRegistered, setIsUserRegistered] = useState();
+  const [wentThroughLaunch, setWentThroughLaunch] = useState(false);
 
   const navigateTo = useNavigate();
 
+  const { address } = useAccount();
   const { data: signer } = useSigner();
-  const contractAddress = "0x8816A7f90Ec092279f2289b362Edbf944322b53d"
+  const contractAddress = "0x6c1FfCC105dba2Bd915f62DCcAd373adA3E79CAD"
   const contractABI = ABI;
 
   const provider = useProvider();
@@ -28,17 +27,15 @@ const InitPage = () => {
   })
 
   const checkUserExists = async () => {
-    const userRegistrationStatus = await contract.checkUserExists()
-    setIsUserRegistered(userRegistrationStatus)
-    console.log(userRegistrationStatus);
+    if (address) {
+      const userRegistrationStatus = await contract.checkUserExists()
+      setIsUserRegistered(userRegistrationStatus)
+      console.log(userRegistrationStatus + " second");
+      setWentThroughLaunch(true);
+    } else {
+      console.log("Connect your wallet first");
+    }
   }
-
-  const account = useAccount({
-    onConnect({ address, connector, isReconnected }) {
-      console.log('Connected', { address, connector, isReconnected })
-      checkUserExists()
-    },
-  })
 
   const submitNameForUser = async () => {
     if (address) {
@@ -51,6 +48,7 @@ const InitPage = () => {
   }
 
   useEffect(() => {
+
   }, [isUserRegistered])
   return (
     <div className="bg-primary w-full h-screen overflow-hidden">
@@ -65,8 +63,19 @@ const InitPage = () => {
           <div className="w-[100%] flex flex-col items-center justify-center m-auto mt-20">
             <ConnectButton />
           </div>
-          {console.log(isUserRegistered) + " dha"}
-          {isUserRegistered === false ?
+
+          <button
+            type="submit"
+            className="w-full ml-auto
+               mr-auto px-12 py-2 rounded-[10px] bg-blue-gradient 
+              text-[20px] font-semibold sm:min-w-[230px] 
+               sm:w-auto text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center
+               "
+            onClick={checkUserExists}
+          >
+            Launch App
+          </button>
+          {(wentThroughLaunch) ? ((!isUserRegistered) ? 
             <div className="relative mt-8 flex flex-col">
               <input
                 id="name"
@@ -88,9 +97,9 @@ const InitPage = () => {
               >
                 Submit
               </button>
-            </div>
+            </div> : navigateTo('/home'))
             :
-            navigateTo('/home')
+            ""
           }
         </div>
       </div>
