@@ -1,10 +1,10 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import React, { useEffect, useState } from "react";
 import styles from "../style";
-import ABI from "./../utils/abi"
+import ABI from "./../utils/abi";
 import logo from "../assets/logo.svg";
 import { useSigner, useContract, useProvider, useAccount } from "wagmi";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const InitPage = () => {
   const [name, setName] = useState("");
@@ -15,7 +15,7 @@ const InitPage = () => {
 
   const { address } = useAccount();
   const { data: signer } = useSigner();
-  const contractAddress = "0x6c1FfCC105dba2Bd915f62DCcAd373adA3E79CAD"
+  const contractAddress = "0x6c1FfCC105dba2Bd915f62DCcAd373adA3E79CAD";
   const contractABI = ABI;
 
   const provider = useProvider();
@@ -24,33 +24,31 @@ const InitPage = () => {
   const contract = useContract({
     address: contractAddress,
     abi: contractABI,
-    signerOrProvider: signer || provider
-  })
+    signerOrProvider: signer || provider,
+  });
 
   const checkUserExists = async () => {
     if (address) {
-      const userRegistrationStatus = await contract.checkUserExists()
-      setIsUserRegistered(userRegistrationStatus)
+      const userRegistrationStatus = await contract.checkUserExists();
+      setIsUserRegistered(userRegistrationStatus);
       console.log(userRegistrationStatus + " second");
       setWentThroughLaunch(true);
     } else {
       console.log("Connect your wallet first");
     }
-  }
+  };
 
   const submitNameForUser = async () => {
     if (address) {
       await contract.addUser(name);
       console.log("added successfully");
-      navigateTo('/home')
+      navigateTo("/home");
     } else {
       console.log("Not connected");
     }
-  }
+  };
 
-  useEffect(() => {
-
-  }, [isUserRegistered])
+  useEffect(() => {}, [isUserRegistered]);
   return (
     <div className="bg-primary w-full h-screen overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
@@ -60,47 +58,51 @@ const InitPage = () => {
 
           <img src={logo} className="w-[150px] h-[150px] m-auto mt-4"></img>
 
-          <div className="w-[100%] flex flex-col items-center justify-center m-auto mt-20">
+          <div className="w-[100%] flex flex-col items-center justify-center m-auto  mt-6">
             <ConnectButton />
+            <button
+              type="submit"
+              className="w-full m-auto mt-6
+                px-12 py-2 rounded-[10px] bg-blue-gradient 
+              text-[20px] font-semibold sm:min-w-[230px] 
+               sm:w-auto text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center
+               "
+              onClick={checkUserExists}
+            >
+              Launch App
+            </button>
           </div>
 
-          <button
-            type="submit"
-            className="w-full ml-auto
-               mr-auto px-12 py-2 rounded-[10px] bg-blue-gradient 
-              text-[20px] font-semibold sm:min-w-[230px] 
-               sm:w-auto text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center
-               "
-            onClick={checkUserExists}
-          >
-            Launch App
-          </button>
-          {(wentThroughLaunch) ? ((!isUserRegistered) ? 
-            <div className="relative mt-8 flex flex-col">
-              <input
-                id="name"
-                type="text"
-                required
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Enter Your Name"
-                className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[280px] text-white feedback-card sm:min-w-[230px] 
+          {wentThroughLaunch ? (
+            !isUserRegistered ? (
+              <div className="relative mt-8 flex flex-col">
+                <input
+                  id="name"
+                  type="text"
+                  required
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Enter Your Name"
+                  className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[280px] text-white feedback-card sm:min-w-[230px] 
               sm:w-auto"
-              ></input>
-              <button
-                type="submit"
-                className="w-full ml-auto
+                ></input>
+                <button
+                  type="submit"
+                  className="w-full ml-auto
                mr-auto px-12 py-2 rounded-[10px] bg-blue-gradient 
               text-[20px] font-semibold sm:min-w-[230px] 
                sm:w-auto text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center
                "
-                onClick={submitNameForUser}
-              >
-                Submit
-              </button>
-            </div> : navigateTo('/home'))
-            :
+                  onClick={submitNameForUser}
+                >
+                  Submit
+                </button>
+              </div>
+            ) : (
+              navigateTo("/home")
+            )
+          ) : (
             ""
-          }
+          )}
         </div>
       </div>
     </div>
