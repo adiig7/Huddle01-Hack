@@ -30,7 +30,7 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
-      <ConnectButton />
+      <ConnectButton showBalance={false}/>
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img

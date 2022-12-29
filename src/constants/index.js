@@ -5,7 +5,7 @@ export const navLinks = [
   },
   {
     id: "my profile",
-    title: "My Profile",
+    title: "Are you a Doctor?",
   },
   {
     id: "team",
