@@ -11,10 +11,13 @@ const NavBar = () => {
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
       <h1 className="text-white nav-heading text-4xl text-gradient font-bold">
-        Med
+        med
       </h1>
       <h1 className="text-white nav-heading-1 text-4xl text-gradient font-bold">
-        xHuddle
+        X
+      </h1>
+      <h1 className="text-white nav-heading text-4xl text-gradient font-bold">
+        huddle
       </h1>
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
@@ -30,7 +33,7 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
-      <ConnectButton showBalance={false}/>
+      <ConnectButton showBalance={false} />
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img

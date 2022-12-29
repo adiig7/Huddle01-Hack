@@ -57,8 +57,19 @@ const InitPage = () => {
           <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
 
           <img src={logo} className="w-[150px] h-[150px] m-auto mt-4"></img>
+          <div className="m-auto flex flex-row justify-center mt-6">
+            <h1 className="text-white nav-heading text-4xl text-gradient font-bold">
+              med
+            </h1>
+            <h1 className="text-white nav-heading-1 text-4xl text-gradient font-bold">
+              X
+            </h1>
+            <h1 className="text-white nav-heading text-4xl text-gradient font-bold">
+              huddle
+            </h1>
+          </div>
 
-          <div className="w-[100%] flex flex-col items-center justify-center m-auto  mt-6">
+          <div className="w-[100%] flex flex-col items-center justify-center m-auto  mt-[80px]">
             <ConnectButton />
             <button
               type="submit"
