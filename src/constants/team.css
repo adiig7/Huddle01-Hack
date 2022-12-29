@@ -1,0 +1,114 @@
+/* 
+  .center {
+      margin: 0 auto;
+  } */
+
+.founders {
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  border: 1px solid rgb(110, 99, 160);
+  border-radius: 10px;
+  backdrop-filter: blur(14px);
+  background-color: #363952;
+  transition: ease-in-out 0.3s;
+  /* max-width: 350px; */
+  /* height: 420px; */
+  /* width: 40%; */
+  padding: 2rem;
+  margin: 25px 30px;
+  text-align: center;
+  /* max-width: 350px; */
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card p {
+  font-size: 16px;
+  max-width: 25ch;
+}
+
+.card a {
+  margin: auto 10px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 34px;
+  margin: 8px auto;
+  margin-top: 25px;
+}
+
+.twitter {
+  display: inline;
+  width: 10px;
+}
+
+.titleWord {
+  animation: color-animation 4s linear infinite;
+}
+
+.word1 {
+  --color-1: #a2cdff;
+  --color-2: #84daff;
+  --color-3: #c0ffa1;
+}
+
+.word2 {
+  --color-1: #6cffe4;
+  --color-2: #4dffea;
+  --color-3: rgb(114, 255, 208);
+}
+
+@keyframes color-animation {
+  0% {
+    color: var(--color-1);
+  }
+  32% {
+    color: var(--color-1);
+  }
+  33% {
+    color: var(--color-2);
+  }
+  65% {
+    color: var(--color-2);
+  }
+  66% {
+    color: var(--color-3);
+  }
+  99% {
+    color: var(--color-3);
+  }
+  100% {
+    color: var(--color-1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid {
+    padding: 1rem;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 22px;
+    margin-top: 25px;
+  }
+}
