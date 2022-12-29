@@ -3,8 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import "./polyfills";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
@@ -38,10 +37,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider chains={chains}>
           <Routes>
-            <Route path="/" element={<InitPage />} />
+            <Route path="/" element={<Navigate to="/auth" />}/>
+            <Route path="/auth" element={<InitPage />} />
+            
             <Route path="/home" element={<App />} />
             <Route path="/team" element={<Team />} />
-            <Route path="/auth" element={<InitPage />} />
             <Route path="/doc/:docId" element={<DoctorDetails />} />
             <Route path="/updateprofile" element={<MyProfile />} />
           </Routes>

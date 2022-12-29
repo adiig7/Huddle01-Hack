@@ -4,7 +4,7 @@ import styles from "../style";
 import ABI from "./../utils/abi";
 import logo from "../assets/logo.svg";
 import { useSigner, useContract, useProvider, useAccount } from "wagmi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, redirect } from "react-router-dom";
 
 const InitPage = () => {
   const [name, setName] = useState("");
@@ -48,7 +48,13 @@ const InitPage = () => {
     }
   };
 
-  useEffect(() => {}, [isUserRegistered]);
+  useEffect(() => {
+    console.log("abcd");
+    console.log(address);
+    if (address) {
+      <redirect exact from="/auth" to="/home" />
+    }
+  }, [isUserRegistered]);
   return (
     <div className="bg-primary w-full h-screen overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>

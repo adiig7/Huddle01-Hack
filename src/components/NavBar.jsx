@@ -22,7 +22,7 @@ const NavBar = () => {
   useEffect(() => {
   }, [active])
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar button-index">
+    <nav className="w-full h-16 flex py-6 justify-between items-center navbar button-index">
       <h1 className="text-white nav-heading text-4xl text-gradient font-bold">
         med
       </h1>
