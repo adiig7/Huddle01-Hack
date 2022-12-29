@@ -1,5 +1,5 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import styles from "../style";
 import ABI from "./../utils/abi"
@@ -8,7 +8,9 @@ import { useNavigate } from 'react-router-dom';
 
 const InitPage = () => {  
   const [name, setName] = useState("");
-  const { address } = useAccount();
+  const [isUserRegistered, setIsUserRegistered] = useState(false);
+
+
 
   const navigateTo = useNavigate();
 
@@ -25,6 +27,19 @@ const InitPage = () => {
     signerOrProvider: signer || provider
   })
 
+  const checkUserExists = async () => {
+    const userRegistrationStatus = await contract.checkUserExists()
+    setIsUserRegistered(userRegistrationStatus)
+    console.log(userRegistrationStatus);
+  }
+
+  const account = useAccount({
+    onConnect({ address, connector, isReconnected }) {
+      console.log('Connected', { address, connector, isReconnected })
+      checkUserExists()
+    },
+  })
+
   const submitNameForUser =async () => {
     if (address) {
       await contract.addUser(name);
@@ -35,6 +50,8 @@ const InitPage = () => {
     }
   }
 
+  useEffect(() => {
+  }, [isUserRegistered])
   return (
     <div className="bg-primary w-full h-screen overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
@@ -48,28 +65,33 @@ const InitPage = () => {
           <div className="w-[100%] flex flex-col items-center justify-center m-auto mt-20">
             <ConnectButton />
           </div>
-          <div className="relative mt-8 flex flex-col">
-            <input
-              id="name"
-              type="text"
-              required
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter Your Name"
-              className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[280px] text-white feedback-card sm:min-w-[230px] 
+          {console.log(isUserRegistered) + " dha"}
+          {isUserRegistered === false ?
+            <div className="relative mt-8 flex flex-col">
+              <input
+                id="name"
+                type="text"
+                required
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter Your Name"
+                className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[280px] text-white feedback-card sm:min-w-[230px] 
               sm:w-auto"
-            ></input>
-            <button
-              type="submit"
-              className="w-full ml-auto
+              ></input>
+              <button
+                type="submit"
+                className="w-full ml-auto
                mr-auto px-12 py-2 rounded-[10px] bg-blue-gradient 
               text-[20px] font-semibold sm:min-w-[230px] 
                sm:w-auto text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center
                "
-              onClick={submitNameForUser}
-            >
-              Submit
-            </button>
-          </div>
+                onClick={submitNameForUser}
+              >
+                Submit
+              </button>
+            </div>
+            :
+            navigateTo('/home')
+          }
         </div>
       </div>
     </div>
