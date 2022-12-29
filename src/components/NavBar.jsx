@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { navLinks } from "../constants";
 import close from "../assets/close.svg";
+import docWhite from "./../assets/doc-white.png"
 import menu from "../assets/menu.svg";
 import { useNavigate } from "react-router-dom";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -13,9 +14,7 @@ const NavBar = () => {
   const navigateTo = useNavigate()
   
   const goToPage = (destination, title) => {
-     setActive(title)
-     console.log(title);
-     console.log(active + " active");
+    setActive(title)
     navigateTo(`/${destination}`)
   }
 
@@ -37,8 +36,8 @@ const NavBar = () => {
         {navLinks.map((nav) => (
           <li
             key={nav.id}
-            className={`font-poppins text-white font-normal cursor-pointer text-[16px] mr-10 ${
-              active === nav.title ? "text-cyan-300" : "text-dimWhite"
+            className={`font-poppins text-white font-normal cursor-pointer text-[18px] mr-10 ${
+              active === nav.title ? "text-gradient" : "text-dimWhite"
             }`}
             onClick={() => goToPage(nav.link, nav.title)}
           >

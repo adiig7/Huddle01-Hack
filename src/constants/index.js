@@ -1,17 +1,17 @@
 export const navLinks = [
   {
     id: "home",
-    title: "Home",
+    title: "Home🏠",
     link: "home"
   },
   {
     id: "my profile",
-    title: "Are you a Doctor?",
+    title: "Are you a Doctor?👨‍⚕️",
     link: "updateprofile"
   },
   {
     id: "team",
-    title: "Team",
+    title: "Team🧑‍🤝‍🧑",
     link:"team"
   },
 ];
