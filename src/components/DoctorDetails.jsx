@@ -106,19 +106,24 @@ const DoctorDetails = () => {
                 </p>
                 <p className="mb-2 font-semibold text-white"> Availability</p>
                 {availability === true ?
+                  <div className="flex flex-row">
                   <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
                   <a a className = "bg-emerald-300 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900" >
                   Available now
                 </a>
-                  </p>
+                    </p>
+                    <p>abcd</p>
+                  </div>
                   :
+                  <div className="flex flex-row">
                   <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
                   <a a className = "bg-red-500 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900" >
                   Not available
-                </a>
-                </p> 
+                      </a>
+                    </p>
+                    <p>ac</p>
+                  </div>
                 }
-                <p>abcd</p>
                 <p className="mb-2 font-semibold text-white">Rating</p>
                 <p className="mb-8 max-w-[450px] text-[#ADB0C9]">{Number(rating)} / 5</p>
               </div>
