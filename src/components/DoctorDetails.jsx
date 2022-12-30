@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../style";
 import people01 from "../assets/people01.png";
 import ABI from "./../utils/abi"
+import RandomString from "random-string"
 import { useParams, useNavigate } from "react-router-dom";
 import { useAccount, useSigner, useContract, useProvider} from "wagmi";
 import { CONTRACT_ADDRESS } from "../constants";
@@ -33,6 +34,13 @@ const DoctorDetails = () => {
     abi: contractABI,
     signerOrProvider: signer || provider
 })
+
+  const navigateToMeetingPage = async () => {
+    const doctorData = await contract.getDoctor(docId)
+    const isAvailable = doctorData.isAvailable
+
+  }
+
   const getDoctorDetail = async () => {
     try {
       const doctorData = await contract.getDoctor(docId);
@@ -110,12 +118,13 @@ const DoctorDetails = () => {
                 </a>
                 </p> 
                 }
+                <p>abcd</p>
                 <p className="mb-2 font-semibold text-white">Rating</p>
                 <p className="mb-8 max-w-[450px] text-[#ADB0C9]">{Number(rating)} / 5</p>
               </div>
               {(address !== docAddress) ? <button
                 className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
-                onClick ={getDoctorDetail}>
+                onClick ={navigateToMeetingPage}>
                 Start meeting
               </button> : <button
                 className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "

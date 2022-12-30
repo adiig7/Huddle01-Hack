@@ -5095,6 +5095,11 @@
     "node-fetch" "^2.6.1"
     "readable-stream" "^3.6.0"
 
+"random-string@^0.2.0":
+  "integrity" "sha512-isA91IquV3ZrFbvwkAtExP8aGL+csx3KGEsEJrvCidzOHioPl5B5g7WyJlk0lMkEz5/i1PqrWTvcdtJHPtrp1g=="
+  "resolved" "https://registry.npmjs.org/random-string/-/random-string-0.2.0.tgz"
+  "version" "0.2.0"
+
 "randombytes@^2.1.0":
   "integrity" "sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ=="
   "resolved" "https://registry.npmjs.org/randombytes/-/randombytes-2.1.0.tgz"

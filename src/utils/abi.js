@@ -41,6 +41,11 @@ const ABI = [{
 				"type": "uint256"
 			},
 			{
+				"internalType": "string",
+				"name": "_meetingLink",
+				"type": "string"
+			},
+			{
 				"internalType": "bool",
 				"name": "_availability",
 				"type": "bool"
@@ -203,6 +208,11 @@ const ABI = [{
 				"type": "uint256"
 			},
 			{
+				"internalType": "string",
+				"name": "meetingLink",
+				"type": "string"
+			},
+			{
 				"internalType": "bool",
 				"name": "isAvailable",
 				"type": "bool"
@@ -272,6 +282,11 @@ const ABI = [{
 				"internalType": "uint256",
 				"name": "rating",
 				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "meetingLink",
+				"type": "string"
 			},
 			{
 				"internalType": "bool",
@@ -388,6 +403,11 @@ const ABI = [{
 					"type": "uint256"
 				},
 				{
+					"internalType": "string",
+					"name": "meetingLink",
+					"type": "string"
+				},
+				{
 					"internalType": "bool",
 					"name": "isAvailable",
 					"type": "bool"
@@ -447,6 +467,11 @@ const ABI = [{
 					"internalType": "uint256",
 					"name": "rating",
 					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "meetingLink",
+					"type": "string"
 				},
 				{
 					"internalType": "bool",

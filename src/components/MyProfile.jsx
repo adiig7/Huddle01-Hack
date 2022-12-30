@@ -8,6 +8,7 @@ import { useContract } from "wagmi";
 import FormControl from "@mui/material/FormControl";
 import ABI from "./../utils/abi";
 import { CONTRACT_ADDRESS } from "../constants";
+import RandomString from "random-string"
 
 const MyProfile = () => {
   const [name, setName] = useState("");
@@ -16,6 +17,7 @@ const MyProfile = () => {
   const [price, setPrice] = useState(0);
   const [availability, setAvailability] = useState(false);
   const [pfp, setPfp] = useState("abcddd");
+  const [meetingLink, setMeetingLink] = useState("");
   const [rating, setRating] = useState(0);
 
   const provider = useProvider();
@@ -35,6 +37,7 @@ const MyProfile = () => {
   const addDoctor = async () => {
     const docData = await contract.getDoctorByAddress(address);
     const doccId = await contract.doctorsId();
+    setMeetingLink(RandomString({length: 15}))
 
     if (docData.doctorWallet === "0x0000000000000000000000000000000000000000") {
       let doctorInit = {
@@ -46,6 +49,7 @@ const MyProfile = () => {
         description: description,
         price: price,
         rating: rating,
+        meetingLink: meetingLink,
         isAvailable: availability,
       };
       console.log(doctorInit);
@@ -57,6 +61,7 @@ const MyProfile = () => {
         doctorInit.pfp,
         doctorInit.price,
         doctorInit.rating,
+        doctorInit.meetingLink,
         doctorInit.isAvailable
       );
 
