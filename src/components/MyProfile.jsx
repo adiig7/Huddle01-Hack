@@ -50,8 +50,8 @@ const MyProfile = () => {
       }
       console.log(doctorInit);
 
-      let tx = await contract.addDoctor(doctorInit.id, doctorInit.name, doctorInit.pfp, doctorInit.category,
-        doctorInit.doctorWallet, doctorInit.description, doctorInit.price, doctorInit.rating, doctorInit.isAvailable);
+      let tx = await contract.addDoctor(doctorInit.name, doctorInit.category, doctorInit.description,
+        doctorInit.pfp, doctorInit.price, doctorInit.rating, doctorInit.isAvailable);
       
       console.log(tx + " transaction");
     } else {

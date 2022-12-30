@@ -12,6 +12,11 @@ const ABI = [{
 	{
 		"inputs": [{
 				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
 				"name": "_category",
 				"type": "string"
 			},
@@ -24,6 +29,21 @@ const ABI = [{
 				"internalType": "string",
 				"name": "_pfpUri",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_price",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_rating",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "_availability",
+				"type": "bool"
 			}
 		],
 		"name": "addDoctor",
