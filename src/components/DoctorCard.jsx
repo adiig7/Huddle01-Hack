@@ -1,8 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const DoctorCard = (props) => {
+  const navigateTo = useNavigate();
+
+  const handleClick = (docId) => {
+    navigateTo(`/doc/${docId}`);
+  };
   return (
-    <div className="flex justify-center w-full feedback-container relative z-[1]">
+    <div
+      className="flex justify-center w-full feedback-container relative z-[1] hover:pointer"
+      onClick={() => handleClick(props.id.toNumber())}
+    >
       <div className="flex justify-between flex-col px-8 py-10 rounded-[20px]  max-w-[370px] md:mr-10 sm:mr-5 mr-0 my-5 feedback-card cursor-pointer transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-95 hover: duration-300">
         <div className="flex flex-row">
           <img

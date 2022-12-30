@@ -162,10 +162,10 @@ const MyProfile = () => {
                         </MenuItem>
                         <MenuItem value="Psychiatrist">Psychiatrist</MenuItem>
                         <MenuItem value="Pediatrician">Pediatrician</MenuItem>
-                        <MenuItem value="Cardiology">Cardialogist</MenuItem>
+                        <MenuItem value="Cardialogist">Cardialogist</MenuItem>
                         <MenuItem value="Cardiology">ENT specialist</MenuItem>
-                        <MenuItem value="Cardiology">Dentist</MenuItem>
-                        <MenuItem value="Cardiology">Gynecologist</MenuItem>
+                        <MenuItem value="Dentist">Dentist</MenuItem>
+                        <MenuItem value="Gynecologist">Gynecologist</MenuItem>
                         <MenuItem value="Cardiology">
                           orthopedic surgeon
                         </MenuItem>

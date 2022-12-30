@@ -75,6 +75,7 @@ const DashBoard = () => {
             doctors.map((doctor) => {
               return (
                 <DoctorCard
+                  id={doctor.id}
                   image={people01}
                   name={doctor.name}
                   category={doctor.category}

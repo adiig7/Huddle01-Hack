@@ -31,6 +31,13 @@
   z-index: 99999;
 }
 
+.fixed-navbar { 
+  position: fixed;
+  left: 0;
+  z-index: 9999; 
+  padding:30px; 
+}
+
 .blue-color {
   color: #5ce1e6;
 }
