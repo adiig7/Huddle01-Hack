@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "../style";
-import NavBar from "./NavBar";
-import Category from "./Category";
 import { useProvider, useSigner, useAccount } from "wagmi";
 import { StoreDoctor } from "../utils/StoreDoctor";
 import { StoreContent } from "../utils/StoreContent";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 import { useContract } from "wagmi";
+import FormControl from '@mui/material/FormControl';
 import ABI from "./../utils/abi";
 
 const MyProfile = () => {
@@ -137,11 +139,45 @@ const MyProfile = () => {
               sm:w-auto"
                     ></input>
 
-                     <select className="rounded-md h-8 w-60 mb-6 dark:bg-[#363952] text-white cursor-pointer opacity-4">
-                      <option value="A">A</option>
-                      <option value="A">B</option>
-                      <option value="A">C</option>
-                     </select>
+                     <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
+                      <InputLabel className="label-color" id="demo-simple-select-helper-label">Age</InputLabel>
+                      <Select
+                         labelStyle = {
+                           {
+                             color: '#ff0000'
+                           }
+                         }
+                         sx = {
+                           {
+                             color: "white",
+                             '.MuiOutlinedInput-notchedOutline': {
+                               borderColor: 'rgba(228, 219, 233, 0.25)',
+                             },
+                             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                               borderColor: 'rgba(228, 219, 233, 0.25)',
+                             },
+                             '&:hover .MuiOutlinedInput-notchedOutline': {
+                               borderColor: 'rgba(228, 219, 233, 0.25)',
+                             },
+                             '.MuiSvgIcon-root ': {
+                               fill: "white !important",
+                             }
+                           }
+                         }
+                          labelId="demo-simple-select-helper-label"
+                          id="demo-simple-select-helper"
+                          value={category}
+                          label="Category"
+                          onChange={(e) => setCategory(e.target.value)}
+                        >
+                          <MenuItem value="">
+                            <em>Select Category</em>
+                          </MenuItem>
+                          <MenuItem value={10}>Ten</MenuItem>
+                          <MenuItem value={20}>Twenty</MenuItem>
+                          <MenuItem value={30}>Thirty</MenuItem>
+                      </Select>
+                      </FormControl>
                     
                     <button className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
                     onClick={addDoctor}>

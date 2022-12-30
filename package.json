@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.2",
     "@popperjs/core": "^2.11.6",
     "@rainbow-me/rainbowkit": "^0.8.1",
     "bootstrap": "^5.2.3",
