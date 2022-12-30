@@ -33,10 +33,9 @@ const MyProfile = () => {
   });
 
   const addDoctor = async () => {
+    const docData = await contract.getDoctorByAddress(address);
     const doccId = await contract.doctorsId();
-    const docData = await contract.getDoctor(doccId.toNumber());
-    
-    console.log(docData);
+
     if (docData.doctorWallet === "0x0000000000000000000000000000000000000000") {
       let doctorInit = {
         'id': doccId.toNumber(),
@@ -50,6 +49,11 @@ const MyProfile = () => {
         'isAvailable': availability,
       }
       console.log(doctorInit);
+
+      let tx = await contract.addDoctor(doctorInit.id, doctorInit.name, doctorInit.pfp, doctorInit.category,
+        doctorInit.doctorWallet, doctorInit.description, doctorInit.price, doctorInit.rating, doctorInit.isAvailable);
+      
+      console.log(tx + " transaction");
     } else {
         console.log("ABCD"); 
     }
@@ -114,7 +118,7 @@ const MyProfile = () => {
                        }
                      }
                      size = "small" >
-                      <InputLabel className="label-color" id="demo-simple-select-helper-label">Age</InputLabel>
+                      <InputLabel className="label-color" id="demo-simple-select-helper-label">Category</InputLabel>
                       <Select 
                          labelStyle = {
                            {
@@ -148,9 +152,9 @@ const MyProfile = () => {
                           <MenuItem value="">
                             <em>Select Category</em>
                           </MenuItem>
-                          <MenuItem value={10}>Ten</MenuItem>
-                          <MenuItem value={20}>Twenty</MenuItem>
-                          <MenuItem value={30}>Thirty</MenuItem>
+                          <MenuItem value="Psychiatrist">Psychiatrist</MenuItem>
+                          <MenuItem value="Pediatrician">Pediatrician</MenuItem>
+                          <MenuItem value="Cardiology">Cardiology</MenuItem>
                       </Select>
                       </FormControl>
                     
