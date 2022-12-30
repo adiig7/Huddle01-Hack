@@ -36,7 +36,12 @@ const DoctorDetails = () => {
 
   const navigateToMeetingPage = async () => {
     const doctorData = await contract.getDoctor(docId);
+    console.log(doctorData);
+    const meetingLink = doctorData.meetingLink;
     const isAvailable = doctorData.isAvailable;
+    if (!isAvailable) {
+      console.log(meetingLink);
+    }
   };
 
   const getDoctorDetail = async () => {
@@ -109,29 +114,31 @@ const DoctorDetails = () => {
                   <div className="flex flex-row gap-4">
                     <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
                       <a
-                        a
                         className="bg-emerald-300 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900"
                       >
                         Available now
                       </a>
                     </p>
-                    <p className="text-gradient font-semibold">
-                      Check avaibility
-                    </p>
+                    {(address === docAddress)
+                      ? (
+                        <p className="text-gradient font-semibold">
+                          Change availability
+                        </p>
+                      ) : ""
+                    }
                   </div>
                 ) : (
                   <div className="flex flex-row gap-4">
                     <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
                       <a
-                        a
                         className="bg-red-500 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900"
                       >
                         Not available
                       </a>
                     </p>
-                    <p className="text-gradient font-semibold">
-                      Check avaibility
-                    </p>
+                      {(address === docAddress) ? (<p className="text-gradient font-semibold" onClick={navigateToMeetingPage}>
+                      Change availability 
+                    </p>) : ""}
                   </div>
                 )}
                 <p className="mb-2 font-semibold text-white">Rating</p>
@@ -142,7 +149,7 @@ const DoctorDetails = () => {
               {address !== docAddress ? (
                 <button
                   className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
-                  onClick={navigateToMeetingPage}
+                 
                 >
                   Start meeting
                 </button>

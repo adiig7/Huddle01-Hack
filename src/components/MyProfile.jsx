@@ -17,7 +17,7 @@ const MyProfile = () => {
   const [price, setPrice] = useState(0);
   const [availability, setAvailability] = useState(false);
   const [pfp, setPfp] = useState("abcddd");
-  const [meetingLink, setMeetingLink] = useState("");
+  const [meetingLink, setMeetingLink] = useState(RandomString({ length: 15 }));
   const [rating, setRating] = useState(0);
 
   const provider = useProvider();
@@ -37,7 +37,7 @@ const MyProfile = () => {
   const addDoctor = async () => {
     const docData = await contract.getDoctorByAddress(address);
     const doccId = await contract.doctorsId();
-    setMeetingLink(RandomString({length: 15}))
+    console.log(meetingLink + " meet");
 
     if (docData.doctorWallet === "0x0000000000000000000000000000000000000000") {
       let doctorInit = {

@@ -69,9 +69,9 @@ const ABI = [{
 	},
 	{
 		"inputs": [{
-			"internalType": "uint256",
-			"name": "_id",
-			"type": "uint256"
+			"internalType": "address",
+			"name": "_docAddress",
+			"type": "address"
 		}],
 		"name": "changeAvailability",
 		"outputs": [],
