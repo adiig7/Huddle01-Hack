@@ -36,7 +36,7 @@
 }
 
 .label-color {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .text-gradient {
@@ -166,5 +166,5 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 2em;
-  background: linear-gradient(-45deg, #fc67fa, #214d76, #fc67fa, #214d76);
+  background: linear-gradient(-45deg, #5ce1e6, #214d76, #5ce1e6, #214d76);
 }
