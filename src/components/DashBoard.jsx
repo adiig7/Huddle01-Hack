@@ -12,7 +12,7 @@ const DashBoard = () => {
   const [doctors, setDoctors] = useState([]);
 
   const { data: signer } = useSigner();
-  const contractAddress = CONTRACT_ADDRESS
+  const contractAddress = CONTRACT_ADDRESS;
   const contractABI = ABI;
 
   const provider = useProvider();
@@ -69,7 +69,7 @@ const DashBoard = () => {
       <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
       <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
         <div
-          className={`flex lg:flex-row md:flex-col sm: flex-col justify-end items-center gap-2.5 ${styles.boxWidth} `}
+          className={`flex lg:flex-row md:flex-col sm: flex-col justify-end items-center gap-3 ${styles.boxWidth} `}
         >
           {doctors ? (
             doctors.map((doctor) => {
