@@ -10,15 +10,14 @@ const NavBar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
 
-  const navigateTo = useNavigate()
-  
-  const goToPage = (destination, title) => {
-    setActive(title)
-    navigateTo(`/${destination}`)
-  }
+  const navigateTo = useNavigate();
 
-  useEffect(() => {
-  }, [active])
+  const goToPage = (destination, title) => {
+    setActive(title);
+    navigateTo(`/${destination}`);
+  };
+
+  useEffect(() => {}, [active]);
   return (
     <nav className="w-full h-16 flex py-6 justify-between items-center navbar button-index">
       <h1 className="text-white nav-heading text-4xl text-gradient font-bold">
@@ -35,7 +34,7 @@ const NavBar = () => {
         {navLinks.map((nav) => (
           <li
             key={nav.id}
-            className={`font-poppins text-white font-normal cursor-pointer text-[18px] mr-10 ${
+            className={`font-poppins text-white font-normal cursor-pointer text-[16px] mr-10 ${
               active === nav.title ? "text-gradient" : "text-dimWhite"
             }`}
             onClick={() => goToPage(nav.link, nav.title)}

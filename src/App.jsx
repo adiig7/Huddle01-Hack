@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import NavBar from "./components/NavBar";
 import DashBoard from "./components/DashBoard";
 import styles from "./style";
@@ -19,7 +24,7 @@ export default function App() {
       <div className={`bg-primary h-screen ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Routes>
-            <Route path="/" element={<Navigate to="/auth" />}/>
+            <Route path="/" element={<Navigate to="/auth" />} />
             <Route path="/auth" element={<InitPage />} />
             <Route path="/home" element={<DashBoard />} />
             <Route path="/team" element={<Team />} />

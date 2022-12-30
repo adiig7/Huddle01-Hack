@@ -6,6 +6,7 @@ import Category from "./Category";
 import { useProvider, useSigner, useAccount } from "wagmi";
 import { StoreDoctor } from "../utils/StoreDoctor";
 import { StoreContent } from "../utils/StoreContent";
+import ABI from "./../utils/abi";
 
 const MyProfile = () => {
   const [name, setName] = useState("");
@@ -18,42 +19,41 @@ const MyProfile = () => {
   const [docAddress, setDocAddress] = useState("");
   const [rating, setRating] = useState(0);
 
-  
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();
 
-  const contractAddress = "0x6c1FfCC105dba2Bd915f62DCcAd373adA3E79CAD"
+  const contractAddress = "0x6c1FfCC105dba2Bd915f62DCcAd373adA3E79CAD";
   const contractABI = ABI;
 
   //0x1C35A430438F127529dD141CABA7Db27E05a33B9
   const contract = useContract({
     address: contractAddress,
     abi: contractABI,
-    signerOrProvider: signer || provider
-  })
+    signerOrProvider: signer || provider,
+  });
 
   const getDocName = async () => {
     const docName = await contract.getDoctor();
-    setName(docName)
-  }
+    setName(docName);
+  };
 
   const storeDoctor = async () => {
-     try {
-       /// show storing Member details to IPFS notification
-       console.log("Storing the files ");
-       /// Start loading
-       const cid = await StoreDoctor(name, description, price, category);
-       const URL = `https://ipfs.io/ipfs/${cid}`;
-       console.log(URL + " url");
-       /// end loading and show the URL to the user to browse
-       console.log("Member details uploaded to IPFS");
-       setPfpURI(URL);
-       await StorePhoto(cid);
-     } catch (err) {
-       console.log(err);
-     }
-  }
+    try {
+      /// show storing Member details to IPFS notification
+      console.log("Storing the files ");
+      /// Start loading
+      const cid = await StoreDoctor(name, description, price, category);
+      const URL = `https://ipfs.io/ipfs/${cid}`;
+      console.log(URL + " url");
+      /// end loading and show the URL to the user to browse
+      console.log("Member details uploaded to IPFS");
+      setPfpURI(URL);
+      await StorePhoto(cid);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const StorePhoto = async (_pfpCID) => {
     try {
@@ -94,7 +94,7 @@ const MyProfile = () => {
                     <button className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center ">
                       Upload Profile Pic
                     </button>
-                    
+
                     <input
                       id="name"
                       type="text"
@@ -102,7 +102,7 @@ const MyProfile = () => {
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
                     ></input>
-                    
+
                     <input
                       id="name"
                       type="text"
@@ -110,7 +110,7 @@ const MyProfile = () => {
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
                     ></input>
-                    
+
                     <Category />
                     <button className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center ">
                       Submit
