@@ -5,6 +5,7 @@ import ABI from "./../utils/abi";
 import logo from "../assets/logo.svg";
 import { useSigner, useContract, useProvider, useAccount } from "wagmi";
 import { useNavigate, redirect } from "react-router-dom";
+import { CONTRACT_ADDRESS } from "../constants";
 
 const InitPage = () => {
   const [name, setName] = useState("");
@@ -15,7 +16,7 @@ const InitPage = () => {
 
   const { address } = useAccount();
   const { data: signer } = useSigner();
-  const contractAddress = "0x6c1FfCC105dba2Bd915f62DCcAd373adA3E79CAD";
+  const contractAddress = CONTRACT_ADDRESS
   const contractABI = ABI;
 
   const provider = useProvider();

@@ -6,12 +6,13 @@ import ABI from "./../utils/abi";
 import { useSigner, useContract, useProvider } from "wagmi";
 import star from "../assets/star.svg";
 import matic from "../assets/polygon-matic-logo.svg";
+import { CONTRACT_ADDRESS } from "../constants";
 
 const DashBoard = () => {
   const [doctors, setDoctors] = useState([]);
 
   const { data: signer } = useSigner();
-  const contractAddress = "0x6c1FfCC105dba2Bd915f62DCcAd373adA3E79CAD";
+  const contractAddress = CONTRACT_ADDRESS
   const contractABI = ABI;
 
   const provider = useProvider();

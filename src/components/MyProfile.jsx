@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "../style";
 import { useProvider, useSigner, useAccount } from "wagmi";
-import { StoreDoctor } from "../utils/StoreDoctor";
-import { StoreContent } from "../utils/StoreContent";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { useContract } from "wagmi";
 import FormControl from '@mui/material/FormControl';
 import ABI from "./../utils/abi";
+import { CONTRACT_ADDRESS } from "../constants";
 
 const MyProfile = () => {
   const [name, setName] = useState("");
@@ -23,10 +22,10 @@ const MyProfile = () => {
   const { data: signer } = useSigner();
   const { address } = useAccount();
 
-  const contractAddress = "0x6c1FfCC105dba2Bd915f62DCcAd373adA3E79CAD";
+  const contractAddress = CONTRACT_ADDRESS
   const contractABI = ABI;
 
-  //0x1C35A430438F127529dD141CABA7Db27E05a33B9
+  //CONTRACT_ADDRESS
   const contract = useContract({
     address: contractAddress,
     abi: contractABI,
@@ -35,60 +34,26 @@ const MyProfile = () => {
 
   const addDoctor = async () => {
     const doccId = await contract.doctorsId();
-    // const docData = await contract.getDoctor(doccId.toNumber() - 1);
-    // console.log(doccId + " docciD");
-    // console.log(docData+ " docdata");
-    // setName(docData);
-    // console.log(docData.name + " name");
+    const docData = await contract.getDoctor(doccId.toNumber());
     
-    let doctorInit = {
-      'id': doccId.toNumber()-1,
-      'name': name,
-      'pfp': pfp,
-      'category': category,
-      'doctorWallet': address,
-      'description': description,
-      'price': price,
-      'rating': rating,
-      'isAvailable': availability,
+    console.log(docData);
+    if (docData.doctorWallet === "0x0000000000000000000000000000000000000000") {
+      let doctorInit = {
+        'id': doccId.toNumber(),
+        'name': name,
+        'pfp': pfp,
+        'category': category,
+        'doctorWallet': address,
+        'description': description,
+        'price': price,
+        'rating': rating,
+        'isAvailable': availability,
+      }
+      console.log(doctorInit);
+    } else {
+        console.log("ABCD"); 
     }
-    console.log(doctorInit);
   }
-
-  // const storeDoctor = async () => {
-  //   try {
-  //     /// show storing Member details to IPFS notification
-  //     console.log("Storing the files ");
-  //     /// Start loading
-  //     const cid = await StoreDoctor(name, description, price, category);
-  //     const URL = `https://ipfs.io/ipfs/${cid}`;
-  //     console.log(URL + " url");
-  //     /// end loading and show the URL to the user to browse
-  //     console.log("Member details uploaded to IPFS");
-  //     setPfpURI(URL);
-  //     await StorePhoto(cid);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const StorePhoto = async (_pfpCID) => {
-  //   try {
-  //     /// show storing research to IPFS notification
-  //     console.log("Storing the files ");
-  //     /// startLoading
-  //     const cid = await StoreContent(pfp);
-  //     const URL = `https://ipfs.io/ipfs/${cid}`;
-  //     console.log(URL);
-  //     console.log("Research uploaded to IPFS");
-  //     /// end loading and show the URL to the user
-  //     setPfpURI(URL);
-  //     /// calling request with the users detail CID and the CID of the research
-  //     request(_pfpCID, cid);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   return (
     <>
