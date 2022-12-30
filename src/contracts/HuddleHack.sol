@@ -32,6 +32,7 @@ contract HuddleHack{
     }
 
     mapping (uint => Doctor) public doctors;
+    mapping (address => Doctor) public doctorsAddressMap;
     mapping (uint => User) public users;
     mapping (address => string) public userNames;
     mapping(address => bool) public userExistsMap;
@@ -45,6 +46,8 @@ contract HuddleHack{
         string memory userName = getUsername();
         doctors[doctorsId] = Doctor(doctorsId, userName, _pfpUri, _category, msg.sender, _description, 0, 0, false);
         doctorExistsMap[msg.sender] = true;
+        doctorsAddressMap[msg.sender] = doctors[doctorsId];
+        doctorsId += 1;
     }
 
     function checkUserExists() view public returns(bool){
