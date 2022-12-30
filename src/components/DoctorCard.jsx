@@ -30,14 +30,14 @@ const DoctorCard = (props) => {
         <p className="font-poppins font-normal text-[18px] leading-[32.4px] text-white my-10">
           {props.desc}
         </p>
-        <div className="flex flex-row ml-2">
+        <div className="flex flex-row gap-20">
           <div className="flex flex-row gap-2">
             <img src={props.matic}></img>
             <h4 className="font-poppins font-semibold text-[18px] leading-[32px] text-white">
               {props.price}
             </h4>
           </div>
-          <div className="flex flex-row ml-32">
+          <div className="flex flex-row">
             <img src={props.star} className="w-[30px] h-[30px] mr-2"></img>
             <h4 className="font-poppins  text-[18px] leading-[32px] text-white">
               {props.rate} / 5
