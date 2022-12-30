@@ -10,6 +10,7 @@ import { useSigner, useContract, useProvider, useAccount } from "wagmi";
 import { CONTRACT_ADDRESS } from "../constants";
 
 const NavBar = () => {
+
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   const [doctorExists, setDoctorExists] = useState(false);
@@ -62,7 +63,8 @@ const NavBar = () => {
   };
 
   return (
-    <nav className = "sticky top-0 z-50 w-full h-16 flex py-6 justify-between items-center navbar button-index">
+    <nav className={`sticky top-0 z-50 w-full h-16 flex py-6 justify-between items-center 
+    navbar button-index ${window.location.href.slice(-4) === "auth" ? "navbar-hidden" : ""}`}>
       <h1 className="text-white nav-heading text-4xl text-gradient font-bold">
         med
       </h1>

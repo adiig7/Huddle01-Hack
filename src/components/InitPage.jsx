@@ -21,7 +21,6 @@ const InitPage = () => {
 
   const provider = useProvider();
 
-  //0x8816A7f90Ec092279f2289b362Edbf944322b53d
   const contract = useContract({
     address: contractAddress,
     abi: contractABI,

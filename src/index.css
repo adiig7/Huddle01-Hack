@@ -38,6 +38,10 @@
   padding:30px; 
 }
 
+.navbar-hidden{
+  display: none;
+}
+
 .blue-color {
   color: #5ce1e6;
 }
