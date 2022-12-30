@@ -139,9 +139,10 @@ const MyProfile = () => {
               sm:w-auto"
                     ></input>
 
-                     <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
+                     <FormControl sx={{ m: 1, minWidth: 220, backgroundColor:"#00f"}} size="small">
                       <InputLabel className="label-color" id="demo-simple-select-helper-label">Age</InputLabel>
-                      <Select
+                      <Select 
+                        boxWidth="200px"
                          labelStyle = {
                            {
                              color: '#ff0000'
