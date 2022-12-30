@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "../style";
 import { useProvider, useSigner, useAccount } from "wagmi";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 import { useContract } from "wagmi";
-import FormControl from '@mui/material/FormControl';
+import FormControl from "@mui/material/FormControl";
 import ABI from "./../utils/abi";
 import { CONTRACT_ADDRESS } from "../constants";
 
@@ -16,13 +16,13 @@ const MyProfile = () => {
   const [price, setPrice] = useState(0);
   const [availability, setAvailability] = useState(false);
   const [pfp, setPfp] = useState("abcddd");
-  const [rating, setRating] = useState(0);  
+  const [rating, setRating] = useState(0);
 
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address } = useAccount();
 
-  const contractAddress = CONTRACT_ADDRESS
+  const contractAddress = CONTRACT_ADDRESS;
   const contractABI = ABI;
 
   //CONTRACT_ADDRESS
@@ -38,26 +38,33 @@ const MyProfile = () => {
 
     if (docData.doctorWallet === "0x0000000000000000000000000000000000000000") {
       let doctorInit = {
-        'id': doccId.toNumber(),
-        'name': name,
-        'pfp': pfp,
-        'category': category,
-        'doctorWallet': address,
-        'description': description,
-        'price': price,
-        'rating': rating,
-        'isAvailable': availability,
-      }
+        id: doccId.toNumber(),
+        name: name,
+        pfp: pfp,
+        category: category,
+        doctorWallet: address,
+        description: description,
+        price: price,
+        rating: rating,
+        isAvailable: availability,
+      };
       console.log(doctorInit);
 
-      let tx = await contract.addDoctor(doctorInit.name, doctorInit.category, doctorInit.description,
-        doctorInit.pfp, doctorInit.price, doctorInit.rating, doctorInit.isAvailable);
-      
+      let tx = await contract.addDoctor(
+        doctorInit.name,
+        doctorInit.category,
+        doctorInit.description,
+        doctorInit.pfp,
+        doctorInit.price,
+        doctorInit.rating,
+        doctorInit.isAvailable
+      );
+
       console.log(tx + " transaction");
     } else {
-        console.log("ABCD"); 
+      console.log("ABCD");
     }
-  }
+  };
 
   return (
     <>
@@ -99,7 +106,7 @@ const MyProfile = () => {
               sm:w-auto"
                     ></textarea>
 
-                     <input
+                    <input
                       id="price"
                       type="number"
                       placeholder="Fee..."
@@ -109,57 +116,69 @@ const MyProfile = () => {
               sm:w-auto"
                     ></input>
 
-                     <FormControl sx = {
-                       {
-                         m: 1,
-                         minWidth: 230,
-                         backgroundColor: "#363952",
-                         borderRadius: "10px"
-                       }
-                     }
-                     size = "small" >
-                      <InputLabel className="label-color" id="demo-simple-select-helper-label">Category</InputLabel>
-                      <Select 
-                         labelStyle = {
-                           {
-                             color: '#ff0000',
-                           }
-                         }
-                         sx = {
-                           {
-                             color: "white",
-                             borderRadius: "10px",
-                             '.MuiOutlinedInput-notchedOutline': {
-                               borderColor: 'rgba(228, 219, 233, 0.25)',
-                             },
-                             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                               borderColor: 'rgba(228, 219, 233, 0.25)',
-                             },
-                             '&:hover .MuiOutlinedInput-notchedOutline': {
-                               borderColor: 'rgba(228, 219, 233, 0.25)',
-                             },
-                             '.MuiSvgIcon-root ': {
-                               fill: "white !important",
-                             }
-                           }
-                         }
-                          labelId="demo-simple-select-helper-label"
-                          id="demo-simple-select-helper"
-                          value={category}
-                          label="Category"
-                          onChange={(e) => setCategory(e.target.value)}
-                        >
-                          <MenuItem value="">
-                            <em>Select Category</em>
-                          </MenuItem>
-                          <MenuItem value="Psychiatrist">Psychiatrist</MenuItem>
-                          <MenuItem value="Pediatrician">Pediatrician</MenuItem>
-                          <MenuItem value="Cardiology">Cardiology</MenuItem>
+                    <FormControl
+                      sx={{
+                        m: 1,
+                        minWidth: 230,
+                        backgroundColor: "#363952",
+                        borderRadius: "10px",
+                      }}
+                      size="small"
+                    >
+                      <InputLabel
+                        className="label-color"
+                        id="demo-simple-select-helper-label"
+                      >
+                        Category
+                      </InputLabel>
+                      <Select
+                        labelStyle={{
+                          color: "#ff0000",
+                        }}
+                        sx={{
+                          color: "white",
+                          borderRadius: "10px",
+                          ".MuiOutlinedInput-notchedOutline": {
+                            borderColor: "rgba(228, 219, 233, 0.25)",
+                          },
+                          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "rgba(228, 219, 233, 0.25)",
+                          },
+                          "&:hover .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "rgba(228, 219, 233, 0.25)",
+                          },
+                          ".MuiSvgIcon-root ": {
+                            fill: "white !important",
+                          },
+                        }}
+                        labelId="demo-simple-select-helper-label"
+                        id="demo-simple-select-helper"
+                        value={category}
+                        label="Category"
+                        onChange={(e) => setCategory(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>Select Category</em>
+                        </MenuItem>
+                        <MenuItem value="Psychiatrist">Psychiatrist</MenuItem>
+                        <MenuItem value="Pediatrician">Pediatrician</MenuItem>
+                        <MenuItem value="Cardiology">Cardialogist</MenuItem>
+                        <MenuItem value="Cardiology">ENT specialist</MenuItem>
+                        <MenuItem value="Cardiology">Dentist</MenuItem>
+                        <MenuItem value="Cardiology">Gynecologist</MenuItem>
+                        <MenuItem value="Cardiology">
+                          orthopedic surgeon
+                        </MenuItem>
+                        <MenuItem value="Cardiology">Radiologist</MenuItem>
+                        <MenuItem value="Cardiology">Neurologist</MenuItem>
+                        <MenuItem value="Cardiology">Therapist</MenuItem>
                       </Select>
-                      </FormControl>
-                    
-                    <button className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
-                    onClick={addDoctor}>
+                    </FormControl>
+
+                    <button
+                      className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
+                      onClick={addDoctor}
+                    >
                       Submit
                     </button>
                   </div>

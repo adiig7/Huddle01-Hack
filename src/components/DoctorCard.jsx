@@ -3,7 +3,7 @@ import React from "react";
 const DoctorCard = (props) => {
   return (
     <div className="flex justify-center w-full feedback-container relative z-[1]">
-      <div className="flex justify-between flex-col px-10 py-12 rounded-[20px]  max-w-[370px] md:mr-10 sm:mr-5 mr-0 my-5 feedback-card">
+      <div className="flex justify-between flex-col px-8 py-10 rounded-[20px]  max-w-[370px] md:mr-10 sm:mr-5 mr-0 my-5 feedback-card">
         <div className="flex flex-row">
           <img
             src={props.image}
@@ -28,7 +28,7 @@ const DoctorCard = (props) => {
               {props.price}
             </h4>
           </div>
-          <div className="flex flex-row ml-36">
+          <div className="flex flex-row ml-32">
             <img src={props.star} className="w-[30px] h-[30px] mr-2"></img>
             <h4 className="font-poppins  text-[18px] leading-[32px] text-white">
               {props.rate} / 5
