@@ -35,15 +35,15 @@ const MyProfile = () => {
 
   const addDoctor = async () => {
     const doccId = await contract.doctorsId();
-    const docData = await contract.getDoctor(doccId.toNumber() - 1);
-    console.log(doccId + " docciD");
-    console.log(docData+ " docdata");
-    setName(docData);
-    console.log(docData.name + " name");
+    // const docData = await contract.getDoctor(doccId.toNumber() - 1);
+    // console.log(doccId + " docciD");
+    // console.log(docData+ " docdata");
+    // setName(docData);
+    // console.log(docData.name + " name");
     
     let doctorInit = {
       'id': doccId.toNumber()-1,
-      'name': docData.name,
+      'name': name,
       'pfp': pfp,
       'category': category,
       'doctorWallet': address,
@@ -112,13 +112,14 @@ const MyProfile = () => {
                       Upload Profile Pic
                     </button> */}
 
-                    {/* <input
+                    <input
                       id="name"
                       type="text"
+                      onChange={(e) => setName(e.target.value)}
                       placeholder="Name"
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
-                    ></input> */}
+                    ></input>
 
                     <textarea
                       id="name"
