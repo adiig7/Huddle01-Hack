@@ -140,18 +140,26 @@ const MyProfile = () => {
               sm:w-auto"
                     ></input>
 
-                     <FormControl sx={{ m: 1, minWidth: 220, backgroundColor:"#00f"}} size="small">
+                     <FormControl sx = {
+                       {
+                         m: 1,
+                         minWidth: 230,
+                         backgroundColor: "#363952",
+                         borderRadius: "10px"
+                       }
+                     }
+                     size = "small" >
                       <InputLabel className="label-color" id="demo-simple-select-helper-label">Age</InputLabel>
                       <Select 
-                        boxWidth="200px"
                          labelStyle = {
                            {
-                             color: '#ff0000'
+                             color: '#ff0000',
                            }
                          }
                          sx = {
                            {
                              color: "white",
+                             borderRadius: "10px",
                              '.MuiOutlinedInput-notchedOutline': {
                                borderColor: 'rgba(228, 219, 233, 0.25)',
                              },
