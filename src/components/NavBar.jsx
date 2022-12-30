@@ -5,19 +5,62 @@ import close from "../assets/close.svg";
 import menu from "../assets/menu.svg";
 import { useNavigate } from "react-router-dom";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import ABI from "./../utils/abi";
+import { useSigner, useContract, useProvider, useAccount } from "wagmi";
+import { CONTRACT_ADDRESS } from "../constants";
 
 const NavBar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+  const [doctorExists, setDoctorExists] = useState(false);
+  const [available, setAvailable] = useState(false);
+  const [id, setId] = useState(0);
+  const [meeting, setMeeting] = useState("");
 
   const navigateTo = useNavigate();
+
+  const {address} = useAccount()
+
+  const { data: signer } = useSigner();
+  const contractAddress = CONTRACT_ADDRESS;
+  const contractABI = ABI;
+
+  const provider = useProvider();
+
+  const contract = useContract({
+    address: contractAddress,
+    abi: contractABI,
+    signerOrProvider: signer || provider,
+  });
+
+  const checkDoctor = async () => {
+    const doctorData = await contract.getDoctorByAddress(address);
+    console.log(doctorData.isAvailable + " ac");
+    setId(doctorData.id)
+    setAvailable(doctorData.isAvailable)
+    setMeeting(doctorData.meetingLink)
+    if (doctorData.doctorWallet !== "0x0000000000000000000000000000000000000000") {
+      setDoctorExists(true)
+    }
+  }
+
+  const openMyProfile = async () => {
+    navigateTo(`/doc/${id}`)
+  }
+
+  const openMyMeeting = async () => {
+    navigateTo(`/doc/${meeting}`)
+  }
+
+  useEffect(() => {
+    checkDoctor()
+  }, [doctorExists, active, address])
 
   const goToPage = (destination, title) => {
     setActive(title);
     navigateTo(`/${destination}`);
   };
 
-  useEffect(() => {}, [active]);
   return (
     <nav className = "sticky top-0 z-50 w-full h-16 flex py-6 justify-between items-center navbar button-index">
       <h1 className="text-white nav-heading text-4xl text-gradient font-bold">
@@ -43,6 +86,21 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
+      {doctorExists ? <p
+        className={`font-poppins mr-5 text-white font-normal cursor-pointer text-[16px] mr-10}`}
+        onClick={openMyProfile}
+      >
+        My Profile
+      </p> : ""}
+
+      {available ?
+        <p
+        className={`font-poppins mr-5 text-white font-normal cursor-pointer text-[16px] mr-10}`}
+        onClick={openMyMeeting}
+      >
+        My Meeting
+      </p> : ""}
+
       <ConnectButton showBalance={false} />
 
       <div className="sm:hidden flex flex-1 justify-end items-center">

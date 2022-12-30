@@ -4,7 +4,7 @@ import styles from "../style";
 import ABI from "./../utils/abi";
 import logo from "../assets/logo.svg";
 import { useSigner, useContract, useProvider, useAccount } from "wagmi";
-import { useNavigate, redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CONTRACT_ADDRESS } from "../constants";
 
 const InitPage = () => {

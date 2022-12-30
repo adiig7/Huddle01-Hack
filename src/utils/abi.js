@@ -1,16 +1,20 @@
-const ABI = [{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_docId",
-			"type": "uint256"
-		}],
+const ABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_docId",
+				"type": "uint256"
+			}
+		],
 		"name": "addAppointment",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
+		"inputs": [
+			{
 				"internalType": "string",
 				"name": "_name",
 				"type": "string"
@@ -57,29 +61,34 @@ const ABI = [{
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "string",
-			"name": "_name",
-			"type": "string"
-		}],
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			}
+		],
 		"name": "addUser",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "address",
-			"name": "_docAddress",
-			"type": "address"
-		}],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_docAddress",
+				"type": "address"
+			}
+		],
 		"name": "changeAvailability",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [{
+		"inputs": [
+			{
 				"internalType": "uint256",
 				"name": "_id",
 				"type": "uint256"
@@ -96,7 +105,8 @@ const ABI = [{
 		"type": "function"
 	},
 	{
-		"inputs": [{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -108,7 +118,8 @@ const ABI = [{
 			}
 		],
 		"name": "appointmentsForDoctor",
-		"outputs": [{
+		"outputs": [
+			{
 				"internalType": "uint256",
 				"name": "id",
 				"type": "uint256"
@@ -130,44 +141,53 @@ const ABI = [{
 	{
 		"inputs": [],
 		"name": "appointmentsId",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "checkDoctorExists",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "checkUserExists",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "address",
-			"name": "",
-			"type": "address"
-		}],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
 		"name": "doctorAddressMap",
-		"outputs": [{
+		"outputs": [
+			{
 				"internalType": "uint256",
 				"name": "id",
 				"type": "uint256"
@@ -222,28 +242,35 @@ const ABI = [{
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "address",
-			"name": "",
-			"type": "address"
-		}],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
 		"name": "doctorExistsMap",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"name": "doctors",
-		"outputs": [{
+		"outputs": [
+			{
 				"internalType": "uint256",
 				"name": "id",
 				"type": "uint256"
@@ -300,287 +327,330 @@ const ABI = [{
 	{
 		"inputs": [],
 		"name": "doctorsId",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "address",
-			"name": "_addressDoc",
-			"type": "address"
-		}],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addressDoc",
+				"type": "address"
+			}
+		],
 		"name": "getAppointmentForADoctor",
-		"outputs": [{
-			"components": [{
-					"internalType": "uint256",
-					"name": "id",
-					"type": "uint256"
-				},
-				{
-					"internalType": "address",
-					"name": "customer",
-					"type": "address"
-				},
-				{
-					"internalType": "address",
-					"name": "doctor",
-					"type": "address"
-				}
-			],
-			"internalType": "struct HuddleHack.Appointment[]",
-			"name": "",
-			"type": "tuple[]"
-		}],
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "customer",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "doctor",
+						"type": "address"
+					}
+				],
+				"internalType": "struct HuddleHack.Appointment[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_docId",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_docId",
+				"type": "uint256"
+			}
+		],
 		"name": "getDocAddress",
-		"outputs": [{
-			"internalType": "address",
-			"name": "",
-			"type": "address"
-		}],
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_id",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
 		"name": "getDoctor",
-		"outputs": [{
-			"components": [{
-					"internalType": "uint256",
-					"name": "id",
-					"type": "uint256"
-				},
-				{
-					"internalType": "string",
-					"name": "name",
-					"type": "string"
-				},
-				{
-					"internalType": "string",
-					"name": "pfp",
-					"type": "string"
-				},
-				{
-					"internalType": "string",
-					"name": "category",
-					"type": "string"
-				},
-				{
-					"internalType": "address",
-					"name": "doctorWallet",
-					"type": "address"
-				},
-				{
-					"internalType": "string",
-					"name": "description",
-					"type": "string"
-				},
-				{
-					"internalType": "uint256",
-					"name": "price",
-					"type": "uint256"
-				},
-				{
-					"internalType": "uint256",
-					"name": "rating",
-					"type": "uint256"
-				},
-				{
-					"internalType": "string",
-					"name": "meetingLink",
-					"type": "string"
-				},
-				{
-					"internalType": "bool",
-					"name": "isAvailable",
-					"type": "bool"
-				}
-			],
-			"internalType": "struct HuddleHack.Doctor",
-			"name": "",
-			"type": "tuple"
-		}],
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "pfp",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "category",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "doctorWallet",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rating",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "meetingLink",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isAvailable",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct HuddleHack.Doctor",
+				"name": "",
+				"type": "tuple"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "address",
-			"name": "docAdd",
-			"type": "address"
-		}],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "docAdd",
+				"type": "address"
+			}
+		],
 		"name": "getDoctorByAddress",
-		"outputs": [{
-			"components": [{
-					"internalType": "uint256",
-					"name": "id",
-					"type": "uint256"
-				},
-				{
-					"internalType": "string",
-					"name": "name",
-					"type": "string"
-				},
-				{
-					"internalType": "string",
-					"name": "pfp",
-					"type": "string"
-				},
-				{
-					"internalType": "string",
-					"name": "category",
-					"type": "string"
-				},
-				{
-					"internalType": "address",
-					"name": "doctorWallet",
-					"type": "address"
-				},
-				{
-					"internalType": "string",
-					"name": "description",
-					"type": "string"
-				},
-				{
-					"internalType": "uint256",
-					"name": "price",
-					"type": "uint256"
-				},
-				{
-					"internalType": "uint256",
-					"name": "rating",
-					"type": "uint256"
-				},
-				{
-					"internalType": "string",
-					"name": "meetingLink",
-					"type": "string"
-				},
-				{
-					"internalType": "bool",
-					"name": "isAvailable",
-					"type": "bool"
-				}
-			],
-			"internalType": "struct HuddleHack.Doctor",
-			"name": "",
-			"type": "tuple"
-		}],
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "pfp",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "category",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "doctorWallet",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rating",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "meetingLink",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isAvailable",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct HuddleHack.Doctor",
+				"name": "",
+				"type": "tuple"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_id",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
 		"name": "getDoctorRating",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "_id",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
 		"name": "getUser",
-		"outputs": [{
-			"components": [{
-					"internalType": "uint256",
-					"name": "id",
-					"type": "uint256"
-				},
-				{
-					"internalType": "string",
-					"name": "username",
-					"type": "string"
-				},
-				{
-					"internalType": "address",
-					"name": "userWallet",
-					"type": "address"
-				}
-			],
-			"internalType": "struct HuddleHack.User",
-			"name": "",
-			"type": "tuple"
-		}],
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "username",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "userWallet",
+						"type": "address"
+					}
+				],
+				"internalType": "struct HuddleHack.User",
+				"name": "",
+				"type": "tuple"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
 		"name": "getUsername",
-		"outputs": [{
-			"internalType": "string",
-			"name": "",
-			"type": "string"
-		}],
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "address",
-			"name": "",
-			"type": "address"
-		}],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
 		"name": "userExistsMap",
-		"outputs": [{
-			"internalType": "bool",
-			"name": "",
-			"type": "bool"
-		}],
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "address",
-			"name": "",
-			"type": "address"
-		}],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
 		"name": "userNames",
-		"outputs": [{
-			"internalType": "string",
-			"name": "",
-			"type": "string"
-		}],
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"name": "users",
-		"outputs": [{
+		"outputs": [
+			{
 				"internalType": "uint256",
 				"name": "id",
 				"type": "uint256"
@@ -602,11 +672,13 @@ const ABI = [{
 	{
 		"inputs": [],
 		"name": "usersId",
-		"outputs": [{
-			"internalType": "uint256",
-			"name": "",
-			"type": "uint256"
-		}],
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	}

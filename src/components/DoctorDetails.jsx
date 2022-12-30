@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../style";
 import people01 from "../assets/people01.png";
 import ABI from "./../utils/abi";
-import RandomString from "random-string";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAccount, useSigner, useContract, useProvider } from "wagmi";
 import { CONTRACT_ADDRESS } from "../constants";
@@ -22,25 +21,41 @@ const DoctorDetails = () => {
 
   const navigateTo = useNavigate();
 
-  // 0x8816A7f90Ec092279f2289b362Edbf944322b53d
   const { data: signer } = useSigner();
   const contractAddress = CONTRACT_ADDRESS;
   const contractABI = ABI;
 
-  //0x1C35A430438F127529dD141CABA7Db27E05a33B9
   const contract = useContract({
     address: contractAddress,
     abi: contractABI,
     signerOrProvider: signer || provider,
   });
 
-  const navigateToMeetingPage = async () => {
+  const startMeetingWithDoc = async () => {
     const doctorData = await contract.getDoctor(docId);
-    console.log(doctorData);
     const meetingLink = doctorData.meetingLink;
     const isAvailable = doctorData.isAvailable;
+    if (isAvailable) {
+      navigateTo(`/${meetingLink}`)
+    } else {
+      console.log("doc not online");
+    }
+  }
+
+  const changeAvailabilityAndNavigateDoctor = async () => {
+    const doctorData = await contract.getDoctor(docId);
+    const meetingLink = doctorData.meetingLink;
+    const isAvailable = doctorData.isAvailable;
+    const docAddress = doctorData.doctorWallet;
     if (!isAvailable) {
-      console.log(meetingLink);
+      const tx = await contract.changeAvailability(docAddress);
+      await tx.wait()
+      setAvailability(true)
+      navigateTo(`/${meetingLink}`)
+    } else {
+      const tx = await contract.changeAvailability(docAddress);
+      await tx.wait()
+      setAvailability(false)
     }
   };
 
@@ -112,7 +127,7 @@ const DoctorDetails = () => {
                 <p className="mb-2 font-semibold text-white"> Availability</p>
                 {availability === true ? (
                   <div className="flex flex-row gap-4">
-                    <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
+                    <p className="mb-8 max-w-[450px] text-[#ADB0C9] cursor-pointer">
                       <a
                         className="bg-emerald-300 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900"
                       >
@@ -121,7 +136,7 @@ const DoctorDetails = () => {
                     </p>
                     {(address === docAddress)
                       ? (
-                        <p className="text-gradient font-semibold">
+                        <p className="text-gradient font-semibold cursor-pointer" onClick={changeAvailabilityAndNavigateDoctor}>
                           Change availability
                         </p>
                       ) : ""
@@ -136,7 +151,7 @@ const DoctorDetails = () => {
                         Not available
                       </a>
                     </p>
-                      {(address === docAddress) ? (<p className="text-gradient font-semibold" onClick={navigateToMeetingPage}>
+                      {(address === docAddress) ? (<p className="text-gradient font-semibold cursor-pointer" onClick={changeAvailabilityAndNavigateDoctor}>
                       Change availability 
                     </p>) : ""}
                   </div>
@@ -149,7 +164,7 @@ const DoctorDetails = () => {
               {address !== docAddress ? (
                 <button
                   className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
-                 
+                  onClick={startMeetingWithDoc}
                 >
                   Start meeting
                 </button>

@@ -5,7 +5,7 @@ export const navLinks = [
     link: "home"
   },
   {
-    id: "my profile",
+    id: "doctor",
     title: "Are you a Doctor?👨‍⚕️",
     link: "updateprofile"
   },
@@ -19,4 +19,4 @@ export const navLinks = [
 export const WEB3STORAGE_TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDJFMjJhQTBmODUzRENCNmEwNGRBYTU4ODgxMkEwRjk0NDk3NjI0QzYiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzIzNDYzMDU3MTQsIm5hbWUiOiJNZWRYSHVkZGxlIn0.UgK9tHUGwHPo8GJpyyiOUVEdWDrFItyUJxvV_m4Loco"
 
-  export const CONTRACT_ADDRESS = "0xC733CC57021bf781B64cA2a1e3d84c6C71bA8223"
+  export const CONTRACT_ADDRESS = "0x9cC0a8968054B37cF0C2f2912B40cb581F91FEa8"

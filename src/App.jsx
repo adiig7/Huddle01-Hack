@@ -12,6 +12,7 @@ import InitPage from "./components/InitPage";
 import Team from "./components/Team";
 import DoctorDetails from "./components/DoctorDetails";
 import MyProfile from "./components/MyProfile";
+import MeetingPage from "./components/MeetingPage";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/team" element={<Team />} />
             <Route path="/doc/:docId" element={<DoctorDetails />} />
             <Route path="/updateprofile" element={<MyProfile />} />
+            <Route path="/:meetingId" element={<MeetingPage />} />
           </Routes>
         </div>
       </div>
