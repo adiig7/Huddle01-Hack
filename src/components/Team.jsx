@@ -5,7 +5,6 @@ import dhrumi_shah from "../assets/dhrumi_shah.jpeg";
 import aditya_gupta from "../assets/aditya_gupta.jpg";
 import twitter from "../assets/twitter.png";
 import github from "../assets/github.svg";
-import NavBar from "./NavBar";
 
 const Team = () => {
   return (
@@ -16,11 +15,11 @@ const Team = () => {
             <div className="absolute z-[0] w-[40%] h-[45%] top-0 pink__gradient" />
             <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
             <h1 className="text-white  nav-heading text-7xl text-center mt-6 text-gradient font-bold">
-              Team Members
+              Buidlers
             </h1>
             <div className="flex lg:flex-row md:flex-col sm:flex-col">
               <div className="founders">
-                <div className="card">
+                <div className="card w-100">
                   <h2 className="text-gradient text-3xl font-bold mb-2">
                     Dhrumi Shah
                   </h2>
@@ -53,7 +52,7 @@ const Team = () => {
                 </div>
               </div>
               <div className="founders">
-                <div className="card">
+                <div className="card w-100">
                   <h2 className="text-gradient text-3xl font-bold mb-2">
                     Aditya Gupta
                   </h2>
@@ -61,7 +60,7 @@ const Team = () => {
                   <img
                     src={aditya_gupta}
                     alt="Dhrumi Shah"
-                    className="w-[300px] h-[300px]"
+                    className="w-[250px] h-[300px]"
                   />
                   <p className="text-white mt-4 mb-4 text-2xl">
                     <b>Full Stack Web3 Developer</b>

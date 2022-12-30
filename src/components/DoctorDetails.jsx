@@ -48,7 +48,7 @@ const DoctorDetails = () => {
   }
 
   const navigateToUpdateProfile = () => {
-    navigateTo('/my')
+    navigateTo('/updateprofile')
   }
   useEffect(() => {
     getDoctorDetail();

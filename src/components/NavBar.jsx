@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { navLinks } from "../constants";
 import close from "../assets/close.svg";
-import docWhite from "./../assets/doc-white.png"
 import menu from "../assets/menu.svg";
 import { useNavigate } from "react-router-dom";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
