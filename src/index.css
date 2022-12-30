@@ -31,7 +31,7 @@
   z-index: 99999;
 }
 
-.blue-color{
+.blue-color {
   color: #5ce1e6;
 }
 
@@ -155,4 +155,12 @@
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
 }
+::-webkit-scrollbar {
+  width: 10px;
+  background: #343444;
+}
 
+::-webkit-scrollbar-thumb {
+  border-radius: 2em;
+  background: linear-gradient(-45deg, #fc67fa, #214d76, #fc67fa, #214d76);
+}
