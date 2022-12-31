@@ -3,7 +3,7 @@ import { HuddleIframe } from "@huddle01/huddle01-iframe";
 import ABI from "../utils/abi";
 import { CONTRACT_ADDRESS } from "../constants";
 import { useContract, useSigner, useProvider, useAccount } from "wagmi";
-import Rating from '@mui/material/Rating';
+import Rating from "@mui/material/Rating";
 
 const MeetingPage = () => {
   const [meetingLink, setMeetingLink] = useState("");
@@ -35,12 +35,13 @@ const MeetingPage = () => {
     noBorder: false,
   };
   return (
-    <div>
-    <HuddleIframe
-      config={iframeConfig} 
-    />
-    <div>
-          <Rating name="read-only" value={2} readOnly />
+    <div className="my-16">
+      <HuddleIframe config={iframeConfig} />
+      <div className="items-center justify-center mt-12 gap-4 flex flex-row">
+        <p className="text-white text-gradient font-semibold text-3xl">
+          Rate your meeting
+        </p>
+        <Rating name="read-only" value={2} readOnly />
       </div>
     </div>
   );
