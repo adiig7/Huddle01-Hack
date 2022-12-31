@@ -8,7 +8,7 @@ import { useContract } from "wagmi";
 import FormControl from "@mui/material/FormControl";
 import ABI from "./../utils/abi";
 import { CONTRACT_ADDRESS } from "../constants";
-import RandomString from "random-string"
+import RandomString from "random-string";
 
 const MyProfile = () => {
   const [name, setName] = useState("");
@@ -105,10 +105,11 @@ const MyProfile = () => {
                     <textarea
                       id="name"
                       type="text"
-                      placeholder="Description..."
+                      placeholder="Description (min 50 characters)..."
                       onChange={(e) => setDescription(e.target.value)}
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
+                      minLength={50}
                     ></textarea>
 
                     <input
@@ -181,7 +182,7 @@ const MyProfile = () => {
                     </FormControl>
 
                     <button
-                      className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
+                      className="text-cyan-900 py-3 px-14 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
                       onClick={addDoctor}
                     >
                       Submit

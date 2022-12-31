@@ -36,11 +36,11 @@ const DoctorDetails = () => {
     const meetingLink = doctorData.meetingLink;
     const isAvailable = doctorData.isAvailable;
     if (isAvailable) {
-      navigateTo(`/${meetingLink}`)
+      navigateTo(`/${meetingLink}`);
     } else {
       console.log("doc not online");
     }
-  }
+  };
 
   const changeAvailabilityAndNavigateDoctor = async () => {
     const doctorData = await contract.getDoctor(docId);
@@ -49,13 +49,13 @@ const DoctorDetails = () => {
     const docAddress = doctorData.doctorWallet;
     if (!isAvailable) {
       const tx = await contract.changeAvailability(docAddress);
-      await tx.wait()
-      setAvailability(true)
-      navigateTo(`/${meetingLink}`)
+      await tx.wait();
+      setAvailability(true);
+      navigateTo(`/${meetingLink}`);
     } else {
       const tx = await contract.changeAvailability(docAddress);
-      await tx.wait()
-      setAvailability(false)
+      await tx.wait();
+      setAvailability(false);
     }
   };
 
@@ -82,7 +82,7 @@ const DoctorDetails = () => {
   }, [docName, category, availability, rating]);
 
   return (
-    <div className="bg-primary w-full h-screen overflow-hidden">
+    <div className="bg-primary w-full h-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <div className="absolute z-[0] w-[40%] h-[45%] top-0 pink__gradient" />
@@ -128,32 +128,38 @@ const DoctorDetails = () => {
                 {availability === true ? (
                   <div className="flex flex-row gap-4">
                     <p className="mb-8 max-w-[450px] text-[#ADB0C9] cursor-pointer">
-                      <a
-                        className="bg-emerald-300 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900"
-                      >
+                      <a className="bg-emerald-300 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900">
                         Available now
                       </a>
                     </p>
-                    {(address === docAddress)
-                      ? (
-                        <p className="text-gradient font-semibold cursor-pointer" onClick={changeAvailabilityAndNavigateDoctor}>
-                          Change availability
-                        </p>
-                      ) : ""
-                    }
+                    {address === docAddress ? (
+                      <p
+                        className="text-gradient font-semibold cursor-pointer"
+                        onClick={changeAvailabilityAndNavigateDoctor}
+                      >
+                        Change availability
+                      </p>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 ) : (
                   <div className="flex flex-row gap-4">
                     <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
-                      <a
-                        className="bg-red-500 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900"
-                      >
+                      <a className="bg-red-500 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900">
                         Not available
                       </a>
                     </p>
-                      {(address === docAddress) ? (<p className="text-gradient font-semibold cursor-pointer" onClick={changeAvailabilityAndNavigateDoctor}>
-                      Change availability 
-                    </p>) : ""}
+                    {address === docAddress ? (
+                      <p
+                        className="text-gradient font-semibold cursor-pointer"
+                        onClick={changeAvailabilityAndNavigateDoctor}
+                      >
+                        Change availability
+                      </p>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 )}
                 <p className="mb-2 font-semibold text-white">Rating</p>
