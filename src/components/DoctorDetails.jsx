@@ -107,7 +107,7 @@ const DoctorDetails = () => {
     navigateTo("/updateprofile");
   };
   useEffect(() => {
-    checkUserExists()
+    // checkUserExists()
     getDoctorDetail();
   }, [docName, category, availability, rating]);
 

@@ -98,7 +98,7 @@ const MyProfile = () => {
   };
 
   useEffect(() => {
-    checkUserExists()
+    // checkUserExists()
   }, [])
 
   return (

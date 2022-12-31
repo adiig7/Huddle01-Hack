@@ -87,7 +87,7 @@ const DashBoard = () => {
   };
 
   useEffect(() => {
-    checkUserExists()
+    // checkUserExists()
 
     getAllDocsData();
   }, []);
