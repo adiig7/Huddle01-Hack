@@ -33,6 +33,17 @@ const DoctorDetails = () => {
     signerOrProvider: signer || provider,
   });
 
+  const checkUserExists = async () => {
+    if (address) {
+      const userRegistrationStatus = await contract.checkUserExists();
+      if (!userRegistrationStatus) {
+        navigateTo('/auth')
+      }
+    } else {
+      navigateTo('/auth')
+    }
+  };
+
   const startMeetingWithDoc = async () => {
     const doctorData = await contract.getDoctor(docId);
     const meetingLink = doctorData.meetingLink;
@@ -96,6 +107,7 @@ const DoctorDetails = () => {
     navigateTo("/updateprofile");
   };
   useEffect(() => {
+    checkUserExists()
     getDoctorDetail();
   }, [docName, category, availability, rating]);
 

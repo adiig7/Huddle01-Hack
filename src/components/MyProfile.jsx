@@ -39,6 +39,17 @@ const MyProfile = () => {
     signerOrProvider: signer || provider,
   });
 
+  const checkUserExists = async () => {
+    if (address) {
+      const userRegistrationStatus = await contract.checkUserExists();
+      if (!userRegistrationStatus) {
+        navigateTo('/auth')
+      }
+    } else {
+      navigateTo('/auth')
+    }
+  };
+
   const addDoctor = async () => {
     const docData = await contract.getDoctorByAddress(address);
     const doccId = await contract.doctorsId();
@@ -85,6 +96,10 @@ const MyProfile = () => {
        });
     }
   };
+
+  useEffect(() => {
+    checkUserExists()
+  }, [])
 
   return (
     <>

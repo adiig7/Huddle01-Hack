@@ -3,10 +3,12 @@ import styles from "../style";
 import DoctorCard from "./DoctorCard";
 import people01 from "../assets/people01.png";
 import ABI from "./../utils/abi";
-import { useSigner, useContract, useProvider } from "wagmi";
+import { useSigner, useContract, useProvider, useAccount } from "wagmi";
 import star from "../assets/star.svg";
 import matic from "../assets/polygon-matic-logo.svg";
 import { CONTRACT_ADDRESS } from "../constants";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const DashBoard = () => {
   const [doctors, setDoctors] = useState([]);
@@ -18,7 +20,10 @@ const DashBoard = () => {
 
   const provider = useProvider();
 
-  //0x8816A7f90Ec092279f2289b362Edbf944322b53d
+  const { address } = useAccount();
+
+  const navigateTo = useNavigate()
+
   const contract = useContract({
     address: contractAddress,
     abi: contractABI,
@@ -28,6 +33,18 @@ const DashBoard = () => {
     const docsCount = await contract.doctorsId();
     return docsCount.toNumber();
   };
+
+  const checkUserExists = async () => {
+      if (address) {
+        const userRegistrationStatus = await contract.checkUserExists();
+        if (!userRegistrationStatus) {
+          navigateTo('/auth')
+        }
+      } else {
+        navigateTo('/auth')
+      }
+    };
+
 
   const getSingleDocData = async (id) => {
     const docData = await contract.getDoctor(id);
@@ -70,6 +87,8 @@ const DashBoard = () => {
   };
 
   useEffect(() => {
+    checkUserExists()
+
     getAllDocsData();
   }, []);
 
@@ -78,6 +97,7 @@ const DashBoard = () => {
       id="home"
       className={`flex md:flex-row flex-col ${styles.paddingY}`}
     >
+      <ToastContainer />
       <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
       <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
       <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
