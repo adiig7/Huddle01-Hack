@@ -72,7 +72,7 @@ const DoctorCard = (props) => {
         </div>
         {availability === true ? (
           <div className="flex flex-row gap-4 mt-6">
-            <p className="mb-4 max-w-[450px] text-[#ADB0C9] cursor-pointer">
+            <p className="mb-2 max-w-[450px] text-[#ADB0C9] cursor-pointer">
               <a className="bg-emerald-300 mt-2 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900">
                 Available now
               </a>

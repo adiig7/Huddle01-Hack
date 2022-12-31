@@ -10,6 +10,8 @@ import ABI from "./../utils/abi";
 import { CONTRACT_ADDRESS } from "../constants";
 import RandomString from "random-string";
 import people01 from "./../assets/people01.png";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const MyProfile = () => {
   const [name, setName] = useState("");
@@ -28,17 +30,25 @@ const MyProfile = () => {
   const contractAddress = CONTRACT_ADDRESS;
   const contractABI = ABI;
 
-  //CONTRACT_ADDRESS
   const contract = useContract({
     address: contractAddress,
     abi: contractABI,
     signerOrProvider: signer || provider,
   });
 
+   const notifyError = (message) => {
+    toast.error(message, { autoClose: 5000 });
+  };
+  
+  const notifySuccess = (message) => { 
+    toast.success(message, { autoClose: 5000 });
+  };
+
   const addDoctor = async () => {
     const docData = await contract.getDoctorByAddress(address);
     const doccId = await contract.doctorsId();
-    console.log(meetingLink + " meet");
+    const id = toast.loading("Adding you as a Doctor...")
+
 
     if (docData.doctorWallet === "0x0000000000000000000000000000000000000000") {
       let doctorInit = {
@@ -52,8 +62,7 @@ const MyProfile = () => {
         rating: rating,
         meetingLink: meetingLink,
         isAvailable: availability,
-      };
-      console.log(doctorInit);
+      }
 
       let tx = await contract.addDoctor(
         doctorInit.name,
@@ -65,15 +74,25 @@ const MyProfile = () => {
         doctorInit.meetingLink,
         doctorInit.isAvailable
       );
-
-      console.log(tx + " transaction");
+         toast.update(id, {
+           render: "Added Doctor sucessfully",
+           type: "success",
+           isLoading: false,
+           autoClose: 5000,
+         });
     } else {
-      console.log("ABCD");
+       toast.update(id, {
+         render: "You are already a registered doctor",
+         type: "error",
+         isLoading: false,
+         autoClose: 5000,
+       });
     }
   };
 
   return (
     <>
+      <ToastContainer />
       <div className="bg-primary w-full h-auto">
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
