@@ -90,7 +90,7 @@ const DoctorDetails = () => {
   }, [docName, category, availability, rating]);
 
   return (
-    <div className = "bg-primary w-full h-auto overflow-auto">
+    <div className="bg-primary w-full h-auto overflow-auto">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <div className="absolute z-[0] w-[40%] h-[45%] top-0 pink__gradient" />
@@ -177,7 +177,7 @@ const DoctorDetails = () => {
               </div>
               {address !== docAddress ? (
                 <button
-                  className="text-cyan-900 py-3 px-4 font-bold mb-4 mt-3 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
+                  className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-3 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
                   onClick={startMeetingWithDoc}
                 >
                   Start meeting
@@ -190,7 +190,6 @@ const DoctorDetails = () => {
                   Update My Profile
                 </button>
               )}
-
             </div>
           </div>
         </div>
