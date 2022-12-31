@@ -63,7 +63,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className={`sticky top-0 z-50 w-full h-16 flex py-6 justify-between items-center 
+    <nav className={`w-full h-16 flex py-6 justify-between items-center 
     navbar button-index ${window.location.href.slice(-4) === "auth" ? "navbar-hidden" : ""}`}>
       <h1 className="text-white nav-heading text-4xl text-gradient font-bold">
         med

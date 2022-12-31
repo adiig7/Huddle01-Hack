@@ -17,14 +17,16 @@ import MeetingPage from "./components/MeetingPage";
 
 export default function App() {
   return (
-    <div className="bg-[#10213B] w-full overflow-hidden">
+    <div className = "bg-[#10213B] h-auto">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-        <div className={`${styles.boxWidth}`}>
+        <header className = {
+          `sticky top-0 z-50 ${styles.boxWidth}`
+        } >
           <NavBar />
-        </div>
+        </header>
       </div>
       <div className = {
-        `bg-primary lg:h-screen sm:h-full ${styles.flexStart}`
+        `bg-primary  ${styles.flexStart}`
       } >
         <div className={`${styles.boxWidth}`}>
           <Routes>

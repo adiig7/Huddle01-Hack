@@ -9,6 +9,7 @@ import FormControl from "@mui/material/FormControl";
 import ABI from "./../utils/abi";
 import { CONTRACT_ADDRESS } from "../constants";
 import RandomString from "random-string";
+import people01 from "./../assets/people01.png"
 
 const MyProfile = () => {
   const [name, setName] = useState("");
@@ -73,7 +74,7 @@ const MyProfile = () => {
 
   return (
     <>
-      <div className="bg-primary w-full h-full">
+      <div className="bg-primary w-full h-auto">
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
             <div className="absolute z-[0] w-[40%] h-[45%] top-0 pink__gradient" />
@@ -84,44 +85,44 @@ const MyProfile = () => {
             <div className="relative mx-auto grid grid-cols-1 mt-2 sm:mt-0 gap-[200px] lg:flex lg:justify-center">
               <div className="flex flex-col max-w-[600px] lg:max-w-[336px] ">
                 <div className="items-center mb-4">
-                  <div className="w-full mb-6 items-center justify-center flex flex-col ">
-                    {/* <img
+                  <div className="w-full mb-4 items-center justify-center flex flex-col ">
+                    <img
                       className="w-[150px] item-center object-cover object-center min-h-[150px]"
                       src={people01}
                     ></img>
                     <button className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center ">
                       Upload Profile Pic
-                    </button> */}
+                    </button>
                     <label className="text-left block text-[17px] font-medium mb-2 text-white">
-                      Enter your name:
+                      Name
                     </label>
                     <input
                       id="name"
                       type="text"
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Name"
+                      placeholder="Enter your Name..."
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
                     ></input>
                     <label className="text-left block text-[17px] font-medium mb-2 text-white">
-                      Enter Description (min 50 characters):
+                      Description (min 50 chars)
                     </label>
                     <textarea
                       id="name"
                       type="text"
-                      placeholder="Description..."
+                      placeholder="Enter your Description..."
                       onChange={(e) => setDescription(e.target.value)}
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
                       minLength={50}
                     ></textarea>
                     <label className="text-left block text-[17px] font-medium mb-2 text-white">
-                      Enter your fee amount (matic):
+                      Fee (MATIC):
                     </label>
                     <input
                       id="price"
                       type="number"
-                      placeholder="Fee..."
+                      placeholder="Your chargeable fees..."
                       min={0}
                       onChange={(e) => setPrice(e.target.value)}
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 

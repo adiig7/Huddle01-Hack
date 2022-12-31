@@ -82,7 +82,7 @@ const DoctorDetails = () => {
   }, [docName, category, availability, rating]);
 
   return (
-    <div className="bg-primary w-full h-full overflow-hidden">
+    <div className = "bg-primary w-full h-auto overflow-auto">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <div className="absolute z-[0] w-[40%] h-[45%] top-0 pink__gradient" />
@@ -109,7 +109,7 @@ const DoctorDetails = () => {
               </div>
             </div>
             <div className="flex flex-col w-full max-w-[443px]">
-              <div className="bg-[#FFFFFF] rounded-[20px] p-6 w-full mb-4 dark:bg-[#33354B]">
+              <div className="bg-[#FFFFFF] rounded-[20px] p-6 w-full mb-3 dark:bg-[#33354B]">
                 <div className="grid grid-cols-12">
                   <p className="mb-2 text-[18px] col-span-11 font-bold text-gradient dark:text-white md:text-[25px]">
                     {docName}
@@ -121,13 +121,13 @@ const DoctorDetails = () => {
                   </p>
                 </div>
                 <p className="mb-2 font-semibold text-white">Description</p>
-                <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
+                <p className="mb-4 max-w-[450px] text-[#ADB0C9]">
                   {description}
                 </p>
                 <p className="mb-2 font-semibold text-white"> Availability</p>
                 {availability === true ? (
                   <div className="flex flex-row gap-4">
-                    <p className="mb-8 max-w-[450px] text-[#ADB0C9] cursor-pointer">
+                    <p className="mb-4 max-w-[450px] text-[#ADB0C9] cursor-pointer">
                       <a className="bg-emerald-300 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900">
                         Available now
                       </a>
@@ -145,7 +145,7 @@ const DoctorDetails = () => {
                   </div>
                 ) : (
                   <div className="flex flex-row gap-4">
-                    <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
+                    <p className="mb-4 max-w-[450px] text-[#ADB0C9]">
                       <a className="bg-red-500 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900">
                         Not available
                       </a>
@@ -163,25 +163,26 @@ const DoctorDetails = () => {
                   </div>
                 )}
                 <p className="mb-2 font-semibold text-white">Rating</p>
-                <p className="mb-8 max-w-[450px] text-[#ADB0C9]">
+                <p className="mb-4 max-w-[450px] text-[#ADB0C9]">
                   {Number(rating)} / 5
                 </p>
               </div>
               {address !== docAddress ? (
                 <button
-                  className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
+                  className="text-cyan-900 py-3 px-4 font-bold mb-4 mt-3 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
                   onClick={startMeetingWithDoc}
                 >
                   Start meeting
                 </button>
               ) : (
                 <button
-                  className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
+                  className="text-cyan-900 py-3 px-4 font-bold mb-4 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
                   onClick={navigateToUpdateProfile}
                 >
                   Update My Profile
                 </button>
               )}
+
             </div>
           </div>
         </div>
