@@ -10,6 +10,7 @@ import { CONTRACT_ADDRESS } from "../constants";
 
 const DashBoard = () => {
   const [doctors, setDoctors] = useState([]);
+  const [rating, setRating] = useState(0);
 
   const { data: signer } = useSigner();
   const contractAddress = CONTRACT_ADDRESS;
@@ -30,6 +31,14 @@ const DashBoard = () => {
 
   const getSingleDocData = async (id) => {
     const docData = await contract.getDoctor(id);
+    const numberOfRaters = docData.numberOfRaters.toNumber();
+    const ratingTotal = docData.rating.toNumber();
+    if (numberOfRaters !== 0) {
+      const rates = ratingTotal / numberOfRaters
+      setRating(rates)
+    } else {
+      setRating(0)
+    }
     const parsedData = {
       id: docData.id,
       name: docData.name,
@@ -38,7 +47,7 @@ const DashBoard = () => {
       address: docData.doctorWallet,
       description: docData.description,
       price: docData.price.toNumber(),
-      rating: docData.rating.toNumber(),
+      rating: Number(rating),
       isAvailable: docData.isAvailable,
     };
     return parsedData;

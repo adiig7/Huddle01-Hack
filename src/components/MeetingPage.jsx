@@ -24,6 +24,13 @@ const MeetingPage = () => {
     setMeetingLink(docData.meetingLink);
     console.log(docData);
   };
+
+  const rate = async (ratig) => {
+    const docData = await contract.getDoctorByAddress(address);
+    const tx = await contract.rateDoctor(docData.doctorWallet, ratig)
+    await tx.wait()
+    console.log(tx)
+  }
   useEffect(() => {
     getLink();
   }, [meetingLink]);
@@ -41,7 +48,13 @@ const MeetingPage = () => {
         <p className="text-white text-gradient font-semibold text-3xl">
           Rate your meeting
         </p>
-        <Rating name="read-only" value={2} readOnly />
+         <Rating
+        name="simple-controlled"
+          value={0}
+        onChange={(event, rating) => {
+          rate(event.target.value)
+        }}
+      />
       </div>
     </div>
   );

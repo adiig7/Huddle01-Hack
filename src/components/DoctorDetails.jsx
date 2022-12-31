@@ -6,6 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useAccount, useSigner, useContract, useProvider } from "wagmi";
 import { CONTRACT_ADDRESS } from "../constants";
 import { ethers } from "ethers";
+import { toast } from "react-toastify";
 
 const DoctorDetails = () => {
   const [docName, setDocName] = useState("");
@@ -70,15 +71,24 @@ const DoctorDetails = () => {
   const getDoctorDetail = async () => {
     try {
       const doctorData = await contract.getDoctor(docId);
+      const numberOfRaters = doctorData.numberOfRaters.toNumber();
+      const ratingTotal = doctorData.rating.toNumber();
+      if (numberOfRaters !== 0) {
+        const rates = ratingTotal / numberOfRaters
+        console.log(rates + " rates");
+        setRating(rates)
+        console.log(rating + "rating");
+      } else {
+        setRating(0)
+      }
       setDocName(doctorData.name);
       setCategory(doctorData.category);
       setPrice(doctorData.price);
       setDocAddress(doctorData.doctorWallet);
       setDescription(doctorData.description);
       setAvailability(doctorData.isAvailable);
-      setRating(doctorData.rating);
     } catch (error) {
-      console.log(error);
+      toast.error(error)
     }
   };
 
@@ -119,23 +129,23 @@ const DoctorDetails = () => {
             <div className="flex flex-col w-full max-w-[443px]">
               <div className="bg-[#FFFFFF] rounded-[20px] p-6 w-full mb-3 dark:bg-[#33354B]">
                 <div className="grid grid-cols-12">
-                  <p className="mb-2 text-[18px] col-span-11 font-bold text-gradient dark:text-white md:text-[25px]">
+                  <p className="mb-6 text-[18px] col-span-11 font-bold text-gradient dark:text-white md:text-[25px]">
                     {docName}
                   </p>
                 </div>
                 <div className="flex flex-row">
-                  <p className="text-[20px] text-white font-bold mb-4">
+                  <p className="text-[20px] text-white font-bold mb-6">
                     $ {Number(price)}
                   </p>
                 </div>
                 <p className="mb-2 font-semibold text-white">Description</p>
-                <p className="mb-4 max-w-[450px] text-[#ADB0C9]">
+                <p className="mb-6 max-w-[450px] text-[#ADB0C9]">
                   {description}
                 </p>
                 <p className="mb-2 font-semibold text-white"> Availability</p>
                 {availability === true ? (
                   <div className="flex flex-row gap-4">
-                    <p className="mb-4 max-w-[450px] text-[#ADB0C9] cursor-pointer">
+                    <p className="mb-6 max-w-[450px] text-[#ADB0C9] cursor-pointer">
                       <a className="bg-emerald-300 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900">
                         Available now
                       </a>
@@ -153,7 +163,7 @@ const DoctorDetails = () => {
                   </div>
                 ) : (
                   <div className="flex flex-row gap-4">
-                    <p className="mb-4 max-w-[450px] text-[#ADB0C9]">
+                    <p className="mb-6 max-w-[450px] text-[#ADB0C9]">
                       <a className="bg-red-500 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900">
                         Not available
                       </a>
@@ -171,7 +181,7 @@ const DoctorDetails = () => {
                   </div>
                 )}
                 <p className="mb-2 font-semibold text-white">Rating</p>
-                <p className="mb-4 max-w-[450px] text-[#ADB0C9]">
+                <p className="mb- max-w-[450px] text-[#ADB0C9]">
                   {Number(rating)} / 5
                 </p>
               </div>

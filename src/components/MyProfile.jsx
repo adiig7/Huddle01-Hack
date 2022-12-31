@@ -12,6 +12,7 @@ import RandomString from "random-string";
 import people01 from "./../assets/people01.png";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { useParams, useNavigate } from "react-router-dom";
 
 const MyProfile = () => {
   const [name, setName] = useState("");
@@ -22,6 +23,8 @@ const MyProfile = () => {
   const [pfp, setPfp] = useState("abcddd");
   const [meetingLink, setMeetingLink] = useState(RandomString({ length: 15 }));
   const [rating, setRating] = useState(0);
+
+  const navigateTo = useNavigate();
 
   const provider = useProvider();
   const { data: signer } = useSigner();
@@ -72,6 +75,7 @@ const MyProfile = () => {
            isLoading: false,
            autoClose: 3000,
          });
+      navigateTo
     } else {
        toast.update(id, {
          render: "You are already a registered doctor",
