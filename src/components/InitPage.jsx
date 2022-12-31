@@ -6,11 +6,22 @@ import logo from "../assets/logo.svg";
 import { useSigner, useContract, useProvider, useAccount } from "wagmi";
 import { useNavigate } from "react-router-dom";
 import { CONTRACT_ADDRESS } from "../constants";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 const InitPage = () => {
   const [name, setName] = useState("");
   const [isUserRegistered, setIsUserRegistered] = useState();
   const [wentThroughLaunch, setWentThroughLaunch] = useState(false);
+
+  const notifyError = (message) => {
+    toast.error(message, { autoClose: 5000 });
+  };
+  
+  const notifySuccess = (message) => { 
+    toast.success(message);
+  };
 
   const navigateTo = useNavigate();
 
@@ -34,14 +45,14 @@ const InitPage = () => {
       console.log(userRegistrationStatus + " second");
       setWentThroughLaunch(true);
     } else {
-      console.log("Connect your wallet first");
+      notifyError("Connect your wallet first")
     }
   };
 
   const submitNameForUser = async () => {
     if (address) {
       await contract.addUser(name);
-      console.log("added successfully");
+      notifySuccess("User added successfully")
       navigateTo("/home");
     } else {
       console.log("Not connected");
@@ -49,8 +60,6 @@ const InitPage = () => {
   };
 
   useEffect(() => {
-    console.log("abcd");
-    console.log(address);
     if (address) {
       <redirect exact from="/auth" to="/home" />
     }
@@ -61,6 +70,8 @@ const InitPage = () => {
         <div className={`${styles.boxWidth}`}>
           <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
           <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
+
+              <ToastContainer />
 
           <img src={logo} className="w-[150px] h-[150px] m-auto mt-4"></img>
           <div className="m-auto flex flex-row justify-center mt-6">

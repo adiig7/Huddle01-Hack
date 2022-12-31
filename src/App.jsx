@@ -14,6 +14,7 @@ import DoctorDetails from "./components/DoctorDetails";
 import MyProfile from "./components/MyProfile";
 import MeetingPage from "./components/MeetingPage";
 
+
 export default function App() {
   return (
     <div className="bg-[#10213B] w-full overflow-hidden">
@@ -22,7 +23,9 @@ export default function App() {
           <NavBar />
         </div>
       </div>
-      <div className={`bg-primary h-full ${styles.flexStart}`}>
+      <div className = {
+        `bg-primary lg:h-screen sm:h-full ${styles.flexStart}`
+      } >
         <div className={`${styles.boxWidth}`}>
           <Routes>
             <Route path="/" element={<Navigate to="/auth" />} />
