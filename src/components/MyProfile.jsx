@@ -79,20 +79,20 @@ const MyProfile = () => {
           <div className={`${styles.boxWidth}`}>
             <div className="absolute z-[0] w-[40%] h-[45%] top-0 pink__gradient" />
             <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-10 blue__gradient" />
-            <h1 className="text-white h-[150px] nav-heading text-6xl text-center mt-6 text-gradient font-bold">
+            <h1 className="text-white h-[100px] nav-heading text-6xl text-center mt-6 text-gradient font-bold">
               My Arena
             </h1>
             <div className="relative mx-auto grid grid-cols-1 mt-2 sm:mt-0 gap-[200px] lg:flex lg:justify-center">
               <div className="flex flex-col max-w-[600px] lg:max-w-[336px] ">
                 <div className="items-center mb-4">
                   <div className="w-full mb-4 items-center justify-center flex flex-col ">
-                    <img
+                    {/* <img
                       className="w-[150px] item-center object-cover object-center min-h-[150px]"
                       src={people01}
                     ></img>
                     <button className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center ">
                       Upload Profile Pic
-                    </button>
+                    </button> */}
                     <label className="text-left block text-[17px] font-medium mb-2 text-white">
                       Name
                     </label>
@@ -117,7 +117,7 @@ const MyProfile = () => {
                       minLength={50}
                     ></textarea>
                     <label className="text-left block text-[17px] font-medium mb-2 text-white">
-                      Fee (MATIC):
+                      Fee (MATIC)
                     </label>
                     <input
                       id="price"
@@ -129,7 +129,7 @@ const MyProfile = () => {
               sm:w-auto"
                     ></input>
                     <label className="text-left block text-[17px] font-medium mb-2 text-white">
-                      Select category:
+                      Select category
                     </label>
                     <FormControl
                       sx={{

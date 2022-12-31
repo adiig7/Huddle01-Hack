@@ -3,6 +3,7 @@ import { useSigner, useContract, useProvider } from "wagmi";
 import { useNavigate } from "react-router-dom";
 import ABI from "../utils/abi";
 import { CONTRACT_ADDRESS } from "../constants";
+import { useParams } from "react-router-dom";
 
 const DoctorCard = (props) => {
   const navigateTo = useNavigate();
@@ -14,6 +15,7 @@ const DoctorCard = (props) => {
   const contractABI = ABI;
 
   const provider = useProvider();
+  const { docId } = useParams();
 
   const contract = useContract({
     address: contractAddress,
