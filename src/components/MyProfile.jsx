@@ -92,7 +92,9 @@ const MyProfile = () => {
                     <button className="text-cyan-900 py-3 px-4 font-bold mb-8 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center ">
                       Upload Profile Pic
                     </button> */}
-
+                    <label className="text-left block text-[17px] font-medium mb-2 text-white">
+                      Enter your name:
+                    </label>
                     <input
                       id="name"
                       type="text"
@@ -101,17 +103,21 @@ const MyProfile = () => {
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
                     ></input>
-
+                    <label className="text-left block text-[17px] font-medium mb-2 text-white">
+                      Enter Description (min 50 characters):
+                    </label>
                     <textarea
                       id="name"
                       type="text"
-                      placeholder="Description (min 50 characters)..."
+                      placeholder="Description..."
                       onChange={(e) => setDescription(e.target.value)}
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
                       minLength={50}
                     ></textarea>
-
+                    <label className="text-left block text-[17px] font-medium mb-2 text-white">
+                      Enter your fee amount (matic):
+                    </label>
                     <input
                       id="price"
                       type="number"
@@ -121,7 +127,9 @@ const MyProfile = () => {
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
                     ></input>
-
+                    <label className="text-left block text-[17px] font-medium mb-2 text-white">
+                      Select category:
+                    </label>
                     <FormControl
                       sx={{
                         m: 1,
