@@ -36,6 +36,7 @@ const DashBoard = () => {
     if (numberOfRaters !== 0) {
       const rates = ratingTotal / numberOfRaters
       setRating(rates)
+      console.log(rates + "r");
     } else {
       setRating(0)
     }
@@ -47,9 +48,11 @@ const DashBoard = () => {
       address: docData.doctorWallet,
       description: docData.description,
       price: docData.price.toNumber(),
-      rating: Number(rating),
+      rating: docData.rating.toNumber(),
       isAvailable: docData.isAvailable,
+      numberOfRaters: docData.numberOfRaters.toNumber()
     };
+    console.log(parsedData);
     return parsedData;
   };
 
@@ -63,6 +66,7 @@ const DashBoard = () => {
     }
     const _doctors = await Promise.all(promises);
     setDoctors(_doctors);
+    console.log(doctors);
   };
 
   useEffect(() => {
@@ -92,12 +96,13 @@ const DashBoard = () => {
                   matic={matic}
                   desc={doctor.description}
                   rate={doctor.rating}
+                  numberOfRaters={doctor.numberOfRaters}
                   star={star}
                 />
               );
             })
           ) : (
-            <a>No researches present</a>
+            <a>No doctors present</a>
           )}
         </div>
       </div>

@@ -75,7 +75,7 @@ const MyProfile = () => {
            isLoading: false,
            autoClose: 3000,
          });
-      navigateTo
+      navigateTo(`/doc/${doccId.toNumber()}`)
     } else {
        toast.update(id, {
          render: "You are already a registered doctor",
@@ -120,7 +120,7 @@ const MyProfile = () => {
               sm:w-auto"
                     ></input>
                     <label className="text-left block text-[17px] font-medium mb-2 text-white">
-                      Description (min 50 chars)
+                      Description (min 150 chars)
                     </label>
                     <textarea
                       id="name"
@@ -129,7 +129,7 @@ const MyProfile = () => {
                       onChange={(e) => setDescription(e.target.value)}
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
-                      minLength={50}
+                      minLength={150}
                     ></textarea>
                     <label className="text-left block text-[17px] font-medium mb-2 text-white">
                       Fee (MATIC)

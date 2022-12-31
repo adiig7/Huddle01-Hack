@@ -27,6 +27,7 @@ const DoctorCard = (props) => {
     const doctorData = await contract.getDoctor(docId);
     const isAvailable = doctorData.isAvailable;
     setAvailability(isAvailable);
+    console.log(isAvailable);
   };
 
   const handleClick = (docId) => {
@@ -66,7 +67,7 @@ const DoctorCard = (props) => {
           <div className="flex flex-row">
             <img src={props.star} className="w-[30px] h-[30px] mr-2"></img>
             <h4 className="font-poppins  text-[18px] leading-[32px] text-white">
-              {props.rate} / 5
+              {props.rate/props.numberOfRaters} / 5
             </h4>
           </div>
         </div>
