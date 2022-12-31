@@ -16,11 +16,7 @@ const InitPage = () => {
   const [wentThroughLaunch, setWentThroughLaunch] = useState(false);
 
   const notifyError = (message) => {
-    toast.error(message, { autoClose: 5000 });
-  };
-  
-  const notifySuccess = (message) => { 
-    toast.success(message);
+    toast.error(message, { autoClose: 3000 });
   };
 
   const navigateTo = useNavigate();
@@ -42,7 +38,6 @@ const InitPage = () => {
     if (address) {
       const userRegistrationStatus = await contract.checkUserExists();
       setIsUserRegistered(userRegistrationStatus);
-      console.log(userRegistrationStatus + " second");
       setWentThroughLaunch(true);
     } else {
       notifyError("Connect your wallet first")
@@ -50,13 +45,24 @@ const InitPage = () => {
   };
 
   const submitNameForUser = async () => {
+    const id = toast.loading("Adding user...")
+    
     if (address) {
       await contract.addUser(name);
-      notifySuccess("User added successfully")
-      navigateTo("/home");
+      toast.update(id, {
+        render: "Added User sucessfully",
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
+ navigateTo("/home");
     } else {
-      console.log("Not connected");
-      notifyError("Connect your wallet first")
+       toast.update(id, {
+         render: "Connect your wallet first",
+         type: "error",
+         isLoading: false,
+         autoClose: 3000,
+       });
     }
   };
 

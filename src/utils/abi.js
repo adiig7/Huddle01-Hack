@@ -5,11 +5,16 @@ const ABI = [
 				"internalType": "uint256",
 				"name": "_docId",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_price",
+				"type": "uint256"
 			}
 		],
 		"name": "addAppointment",
 		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{

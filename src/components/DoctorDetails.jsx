@@ -5,6 +5,7 @@ import ABI from "./../utils/abi";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAccount, useSigner, useContract, useProvider } from "wagmi";
 import { CONTRACT_ADDRESS } from "../constants";
+import { ethers } from "ethers";
 
 const DoctorDetails = () => {
   const [docName, setDocName] = useState("");
@@ -34,8 +35,15 @@ const DoctorDetails = () => {
   const startMeetingWithDoc = async () => {
     const doctorData = await contract.getDoctor(docId);
     const meetingLink = doctorData.meetingLink;
+    const price = doctorData.price.toNumber();
+    // const parsed = ethers.utils.parseEther(price)
+    // console.log(typeof parsed);
     const isAvailable = doctorData.isAvailable;
     if (isAvailable) {
+      // const tx = await contract.addAppointment(docId, price, {
+      //   value: parsed.toString()
+      // })
+      // await tx.wait()
       navigateTo(`/${meetingLink}`);
     } else {
       console.log("doc not online");

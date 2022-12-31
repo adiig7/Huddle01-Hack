@@ -36,14 +36,6 @@ const MyProfile = () => {
     signerOrProvider: signer || provider,
   });
 
-   const notifyError = (message) => {
-    toast.error(message, { autoClose: 5000 });
-  };
-  
-  const notifySuccess = (message) => { 
-    toast.success(message, { autoClose: 5000 });
-  };
-
   const addDoctor = async () => {
     const docData = await contract.getDoctorByAddress(address);
     const doccId = await contract.doctorsId();
@@ -78,14 +70,14 @@ const MyProfile = () => {
            render: "Added Doctor sucessfully",
            type: "success",
            isLoading: false,
-           autoClose: 5000,
+           autoClose: 3000,
          });
     } else {
        toast.update(id, {
          render: "You are already a registered doctor",
          type: "error",
          isLoading: false,
-         autoClose: 5000,
+         autoClose: 3000,
        });
     }
   };
