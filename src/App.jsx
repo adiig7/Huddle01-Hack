@@ -15,14 +15,14 @@ import MyProfile from "./components/MyProfile";
 import MeetingPage from "./components/MeetingPage";
 
 export default function App() {
-    return (
+  return (
     <div className="bg-[#10213B] w-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <NavBar />
         </div>
       </div>
-      <div className={`bg-primary h-screen ${styles.flexStart}`}>
+      <div className={`bg-primary h-full ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Routes>
             <Route path="/" element={<Navigate to="/auth" />} />

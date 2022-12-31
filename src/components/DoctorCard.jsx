@@ -14,10 +14,7 @@ const DoctorCard = (props) => {
     >
       <div className="flex justify-between flex-col px-8 py-10 rounded-[20px]  max-w-[370px] md:mr-10 sm:mr-5 mr-0 my-5 feedback-card cursor-pointer transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-95 hover: duration-300">
         <div className="flex flex-row">
-          <img
-            src={props.image}
-            className="w-[48px] h-[48px] rounded-full"
-          />
+          <img src={props.image} className="w-[48px] h-[48px] rounded-full" />
           <div className="flex flex-col ml-4">
             <h4 className="font-poppins font-semibold text-[20px] leading-[32px] text-gradient">
               {props.name}
@@ -27,7 +24,7 @@ const DoctorCard = (props) => {
             </p>
           </div>
         </div>
-        <p className="font-poppins font-normal text-[18px] leading-[32.4px] text-white my-10">
+        <p className="font-poppins font-normal text-[16px] leading-[32.4px] text-white my-6 truncate">
           {props.desc}
         </p>
         <div className="flex flex-row gap-20">
@@ -44,6 +41,11 @@ const DoctorCard = (props) => {
             </h4>
           </div>
         </div>
+        <p className="mt-6 justify-end max-w-[450px] text-[#ADB0C9] cursor-pointer">
+          <a className="bg-emerald-300 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900">
+            Available now
+          </a>
+        </p>
       </div>
     </div>
   );

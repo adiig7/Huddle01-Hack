@@ -11,11 +11,13 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@huddle01/huddle01-iframe": "^0.0.8",
     "@mui/material": "^5.11.2",
     "@popperjs/core": "^2.11.6",
     "@rainbow-me/rainbowkit": "^0.8.1",
     "bootstrap": "^5.2.3",
     "ethers": "^5.7.2",
+    "lodash.truncate": "^4.4.2",
     "random-string": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
