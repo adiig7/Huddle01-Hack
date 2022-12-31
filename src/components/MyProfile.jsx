@@ -9,7 +9,7 @@ import FormControl from "@mui/material/FormControl";
 import ABI from "./../utils/abi";
 import { CONTRACT_ADDRESS } from "../constants";
 import RandomString from "random-string";
-import people01 from "./../assets/people01.png"
+import people01 from "./../assets/people01.png";
 
 const MyProfile = () => {
   const [name, setName] = useState("");
@@ -178,15 +178,17 @@ const MyProfile = () => {
                         <MenuItem value="Psychiatrist">Psychiatrist</MenuItem>
                         <MenuItem value="Pediatrician">Pediatrician</MenuItem>
                         <MenuItem value="Cardialogist">Cardialogist</MenuItem>
-                        <MenuItem value="Cardiology">ENT specialist</MenuItem>
+                        <MenuItem value="ENT specialist">
+                          ENT specialist
+                        </MenuItem>
                         <MenuItem value="Dentist">Dentist</MenuItem>
                         <MenuItem value="Gynecologist">Gynecologist</MenuItem>
-                        <MenuItem value="Cardiology">
+                        <MenuItem value="orthopedic surgeon">
                           orthopedic surgeon
                         </MenuItem>
-                        <MenuItem value="Cardiology">Radiologist</MenuItem>
-                        <MenuItem value="Cardiology">Neurologist</MenuItem>
-                        <MenuItem value="Cardiology">Therapist</MenuItem>
+                        <MenuItem value="Radiologist">Radiologist</MenuItem>
+                        <MenuItem value="Neurologist">Neurologist</MenuItem>
+                        <MenuItem value="Therapist">Therapist</MenuItem>
                       </Select>
                     </FormControl>
 
