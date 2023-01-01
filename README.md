@@ -20,6 +20,20 @@ For the design and build, we have used React.js and TailwindCSS
 
 All the frontend code is available under [/src](https://github.com/adiig7/Huddle01-Hack/blob/main/src).
 
+### Frontend Pages
+ 
+ - Auth Page
+ 
+ - Dashboard
+ 
+ - Add Doctor Page
+ 
+ - Doctor Details Page
+ 
+ - Meeting Page
+ 
+ - Team Page
+
 <br />
 
 ## Team
