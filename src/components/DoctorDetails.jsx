@@ -235,7 +235,9 @@ const DoctorDetails = () => {
                   >
                     Start Your meeting
                   </button>
-                ) : " "
+                ) : <div className="h-40">
+                    
+                </div>
               }
             </div>
           </div>
