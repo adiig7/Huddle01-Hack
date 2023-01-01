@@ -27,6 +27,9 @@ All the frontend code is available under [/src](https://github.com/adiig7/Huddle
  - Dashboard
  
  - Add Doctor Page
+
+![image](https://user-images.githubusercontent.com/54351909/210166138-cd75e790-efd8-43bf-a531-4cfd16f67673.png)
+
  
  - Doctor Details Page
  
