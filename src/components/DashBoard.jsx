@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../style";
 import DoctorCard from "./DoctorCard";
-import people01 from "../assets/people01.png";
 import ABI from "./../utils/abi";
 import { useSigner, useContract, useProvider, useAccount } from "wagmi";
 import star from "../assets/star.svg";
@@ -9,6 +8,7 @@ import matic from "../assets/polygon-matic-logo.svg";
 import { CONTRACT_ADDRESS } from "../constants";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import doc from "../assets/doctor.svg";
 
 const DashBoard = () => {
   const [doctors, setDoctors] = useState([]);
@@ -22,7 +22,7 @@ const DashBoard = () => {
 
   const { address } = useAccount();
 
-  const navigateTo = useNavigate()
+  const navigateTo = useNavigate();
 
   const contract = useContract({
     address: contractAddress,
@@ -35,27 +35,26 @@ const DashBoard = () => {
   };
 
   const checkUserExists = async () => {
-      if (address) {
-        const userRegistrationStatus = await contract.checkUserExists();
-        if (!userRegistrationStatus) {
-          navigateTo('/auth')
-        }
-      } else {
-        navigateTo('/auth')
+    if (address) {
+      const userRegistrationStatus = await contract.checkUserExists();
+      if (!userRegistrationStatus) {
+        navigateTo("/auth");
       }
-    };
-
+    } else {
+      navigateTo("/auth");
+    }
+  };
 
   const getSingleDocData = async (id) => {
     const docData = await contract.getDoctor(id);
     const numberOfRaters = docData.numberOfRaters.toNumber();
     const ratingTotal = docData.rating.toNumber();
     if (numberOfRaters !== 0) {
-      const rates = ratingTotal / numberOfRaters
-      setRating(rates)
+      const rates = ratingTotal / numberOfRaters;
+      setRating(rates);
       console.log(rates + "r");
     } else {
-      setRating(0)
+      setRating(0);
     }
     const parsedData = {
       id: docData.id,
@@ -67,7 +66,7 @@ const DashBoard = () => {
       price: docData.price.toNumber(),
       rating: docData.rating.toNumber(),
       isAvailable: docData.isAvailable,
-      numberOfRaters: docData.numberOfRaters.toNumber()
+      numberOfRaters: docData.numberOfRaters.toNumber(),
     };
     console.log(parsedData);
     return parsedData;
@@ -109,7 +108,7 @@ const DashBoard = () => {
               return (
                 <DoctorCard
                   id={doctor.id}
-                  image={people01}
+                  image={doc}
                   name={doctor.name}
                   category={doctor.category}
                   price={doctor.price}

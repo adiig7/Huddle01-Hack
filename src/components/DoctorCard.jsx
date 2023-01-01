@@ -45,7 +45,7 @@ const DoctorCard = (props) => {
     >
       <div className="flex justify-between flex-col px-6 py-8 rounded-[20px]  max-w-[370px] md:mr-10 sm:mr-5 mr-0 my-5 feedback-card cursor-pointer transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-95 hover: duration-300">
         <div className="flex flex-row">
-          <img src={props.image} className="w-[48px] h-[48px] rounded-full" />
+          <img src={props.image} className="h-[50px] w-[40px]" />
           <div className="flex flex-col ml-4">
             <h4 className="font-poppins font-semibold text-[20px] leading-[32px] text-gradient">
               {props.name}
@@ -60,7 +60,7 @@ const DoctorCard = (props) => {
         </p>
         <div className="flex flex-row gap-20">
           <div className="flex flex-row gap-2">
-            <img src={props.matic}></img>
+            <img src={props.matic} className="h-[30px] w-[20px]"></img>
             <h4 className="font-poppins font-semibold text-[18px] leading-[32px] text-white">
               {props.price}
             </h4>
@@ -68,27 +68,10 @@ const DoctorCard = (props) => {
           <div className="flex flex-row">
             <img src={props.star} className="w-[30px] h-[30px] mr-2"></img>
             <h4 className="font-poppins  text-[18px] leading-[32px] text-white">
-              {props.rate/props.numberOfRaters} / 5
+              {props.rate / props.numberOfRaters} / 5
             </h4>
           </div>
         </div>
-        {availability === true ? (
-          <div className="flex flex-row gap-4 mt-6">
-            <p className="mb-2 max-w-[450px] text-[#ADB0C9] cursor-pointer">
-              <a className="bg-emerald-300 mt-2 font-ssp cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900">
-                Available now
-              </a>
-            </p>
-          </div>
-        ) : (
-          <div className="flex flex-row gap-4 mt-6">
-            <p className="mb-2 max-w-[450px] text-[#ADB0C9]">
-              <a className="bg-red-500 font-ssp mt-2 cursor-pointer rounded-[24px] py-1 px-4 text-[13px] font-semibold text-cyan-900">
-                Not available
-              </a>
-            </p>
-          </div>
-        )}
       </div>
     </div>
   );
