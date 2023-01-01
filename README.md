@@ -33,6 +33,9 @@ All the frontend code is available under [/src](https://github.com/adiig7/Huddle
  - Meeting Page
  
  - Team Page
+ 
+![image](https://user-images.githubusercontent.com/54351909/210166076-06c74385-8a92-44e0-93df-8794b8de98a4.png)
+
 
 <br />
 
