@@ -99,9 +99,10 @@ const DashBoard = () => {
       <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
       <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
       <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
-        <div
-          className={`flex lg:flex-row md:flex-col sm: flex-col justify-end items-center gap-3 ${styles.boxWidth} `}
-        >
+        {/* <div
+          className={`flex lg:flex-row md:flex-col sm: flex-col justify-end items-center ${styles.boxWidth} `}
+        > */}
+        <div className="lg:grid grid-cols-3 gap-8 md:flex-col sm:flex-col">
           {doctors ? (
             doctors.map((doctor) => {
               return (
@@ -123,6 +124,7 @@ const DashBoard = () => {
             <a>No doctors present</a>
           )}
         </div>
+        {/* </div> */}
       </div>
     </section>
   );
