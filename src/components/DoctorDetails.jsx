@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../style";
-import people01 from "../assets/people01.png";
+import doc from "../assets/doctor.svg";
 import matic from "../assets/polygon-matic-logo.svg";
 import ABI from "./../utils/abi";
 import { useParams, useNavigate, createSearchParams } from "react-router-dom";
@@ -38,21 +38,21 @@ const DoctorDetails = () => {
     const doctorData = await contract.getDoctor(docId);
     const meetingLink = doctorData.meetingLink;
     const price = doctorData.price;
-    const priceInWei = ethers.utils.parseEther(price.toString())
+    const priceInWei = ethers.utils.parseEther(price.toString());
 
     const isAvailable = doctorData.isAvailable;
     if (isAvailable) {
       const tx = await contract.addAppointment(docId, priceInWei, {
-        value: priceInWei
-      })
-      await tx.wait()
+        value: priceInWei,
+      });
+      await tx.wait();
       navigateTo(`/${meetingLink}`, {
         state: {
           add: docAddress,
         },
       });
     } else {
-      toast.error("Doctor not available right now!", {autoClose: 3000})
+      toast.error("Doctor not available right now!", { autoClose: 3000 });
     }
   };
 
@@ -159,7 +159,7 @@ const DoctorDetails = () => {
                 <div className="w-full mb-6 items-center justify-center flex ">
                   <img
                     className="w-[150px] item-center object-cover object-center min-h-[150px]"
-                    src={people01}
+                    src={doc}
                   ></img>
                 </div>
               </div>
