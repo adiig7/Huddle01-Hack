@@ -23,6 +23,10 @@ All the frontend code is available under [/src](https://github.com/adiig7/Huddle
 ### Frontend Pages
  
  - Auth Page
+
+![image](https://user-images.githubusercontent.com/84569241/210166490-1d957e55-e3d2-4565-92d5-d78e5a42c3c3.png)
+
+
  
  - Dashboard
  
@@ -32,6 +36,9 @@ All the frontend code is available under [/src](https://github.com/adiig7/Huddle
 
  
  - Doctor Details Page
+ 
+ ![image](https://user-images.githubusercontent.com/84569241/210166576-32adb197-7166-44ad-8fc8-1408b54ca681.png)
+
  
  - Meeting Page
  
