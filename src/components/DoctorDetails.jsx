@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../style";
 import people01 from "../assets/people01.png";
+import matic from "../assets/polygon-matic-logo.svg";
 import ABI from "./../utils/abi";
 import { useParams, useNavigate, createSearchParams } from "react-router-dom";
 import { useAccount, useSigner, useContract, useProvider } from "wagmi";
@@ -47,8 +48,8 @@ const DoctorDetails = () => {
       // await tx.wait()
       navigateTo(`/${meetingLink}`, {
         state: {
-          add: docAddress
-        }
+          add: docAddress,
+        },
       });
     } else {
       console.log("doc not online");
@@ -60,13 +61,13 @@ const DoctorDetails = () => {
     const meetingLink = doctorData.meetingLink;
     navigateTo(`/${meetingLink}`, {
       state: {
-        add: docAddress
-      }
+        add: docAddress,
+      },
     });
-  }
+  };
 
   const changeAvailabilityAndNavigateDoctor = async () => {
-    const id = toast.loading("Chaning Availability...")
+    const id = toast.loading("Chaning Availability...");
     const doctorData = await contract.getDoctor(docId);
     const meetingLink = doctorData.meetingLink;
     const isAvailable = doctorData.isAvailable;
@@ -83,8 +84,8 @@ const DoctorDetails = () => {
       });
       navigateTo(`/${meetingLink}`, {
         state: {
-          add: docAddress
-        }
+          add: docAddress,
+        },
       });
     } else {
       const tx = await contract.changeAvailability(doctorAdd);
@@ -105,12 +106,12 @@ const DoctorDetails = () => {
       const numberOfRaters = doctorData.numberOfRaters.toNumber();
       const ratingTotal = doctorData.rating.toNumber();
       if (numberOfRaters !== 0) {
-        const rates = ratingTotal / numberOfRaters
+        const rates = ratingTotal / numberOfRaters;
         console.log(rates + " rates");
-        setRating(rates)
+        setRating(rates);
         console.log(rating + "rating");
       } else {
-        setRating(0)
+        setRating(0);
       }
       setDocName(doctorData.name);
       setCategory(doctorData.category);
@@ -119,7 +120,7 @@ const DoctorDetails = () => {
       setDescription(doctorData.description);
       setAvailability(doctorData.isAvailable);
     } catch (error) {
-      toast.error(error)
+      toast.error(error);
     }
   };
 
@@ -166,9 +167,11 @@ const DoctorDetails = () => {
                     {docName}
                   </p>
                 </div>
-                <div className="flex flex-row">
+                <p className="mb-2 font-semibold text-white">Fee</p>
+                <div className="flex flex-row gap-2">
+                  <img src={matic} className="h-[30px] w-[20px]" />
                   <p className="text-[20px] text-white font-bold mb-6">
-                    $ {Number(price)}
+                    {Number(price)}
                   </p>
                 </div>
                 <p className="mb-2 font-semibold text-white">Description</p>
@@ -225,20 +228,20 @@ const DoctorDetails = () => {
                 >
                   Start meeting
                 </button>
-              ) : " "}
-              
-              {
-                (address === docAddress && availability === true)  ? (
-                  <button
-                    className="text-cyan-900 py-3 px-4 font-bold mb-4 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
-                    onClick={navigateToMyMeeting}
-                  >
-                    Start Your meeting
-                  </button>
-                ) : <div className="h-40">
-                    
-                </div>
-              }
+              ) : (
+                " "
+              )}
+
+              {address === docAddress && availability === true ? (
+                <button
+                  className="text-cyan-900 py-3 px-4 font-bold mb-4 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
+                  onClick={navigateToMyMeeting}
+                >
+                  Start Your meeting
+                </button>
+              ) : (
+                <div className="h-40"></div>
+              )}
             </div>
           </div>
         </div>
