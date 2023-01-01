@@ -1,6 +1,6 @@
 # MedxHuddle
 
-
+<img width="100" height="100" src="https://user-images.githubusercontent.com/84569241/210165892-14d79a8b-f3b3-4950-a1da-09f47d207d77.svg">
 
 ## Backend
 
