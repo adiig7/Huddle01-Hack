@@ -2,8 +2,7 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-contract HuddleHack{
-
+contract MedXhuddle{
     uint public doctorsId = 0;
     uint public usersId = 0;
     uint public appointmentsId = 0;
@@ -87,6 +86,7 @@ contract HuddleHack{
 
     function rateDoctor(address _doc, uint _rate) public {
         require(_doc != msg.sender, "You can't rate yourself");
+        // require(appointmentsForDoctor[_doc] );
         Doctor storage doctor = doctorAddressMap[_doc];
         uint docId = doctor.id;
         uint rating = doctor.rating;
