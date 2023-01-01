@@ -4,9 +4,9 @@
 
 ## Backend
 
-### Smart Contract Code
+### Smart Contract Details
 
-[medXhuddle](https://github.com/adiig7/Huddle01-Hack/blob/main/src/contracts/HuddleHack.sol)
+Smart Contract Code: [medXhuddle](https://github.com/adiig7/Huddle01-Hack/blob/main/src/contracts/HuddleHack.sol)
 
 ### Smart Contract Deployment
 The smart contract has been deployed on the Polygon Mumbai Testnet.
