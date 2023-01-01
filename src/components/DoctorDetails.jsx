@@ -6,7 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useAccount, useSigner, useContract, useProvider } from "wagmi";
 import { CONTRACT_ADDRESS } from "../constants";
 import { ethers } from "ethers";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const DoctorDetails = () => {
   const [docName, setDocName] = useState("");
@@ -33,17 +33,6 @@ const DoctorDetails = () => {
     signerOrProvider: signer || provider,
   });
 
-  const checkUserExists = async () => {
-    if (address) {
-      const userRegistrationStatus = await contract.checkUserExists();
-      if (!userRegistrationStatus) {
-        navigateTo('/auth')
-      }
-    } else {
-      navigateTo('/auth')
-    }
-  };
-
   const startMeetingWithDoc = async () => {
     const doctorData = await contract.getDoctor(docId);
     const meetingLink = doctorData.meetingLink;
@@ -63,6 +52,7 @@ const DoctorDetails = () => {
   };
 
   const changeAvailabilityAndNavigateDoctor = async () => {
+    const id = toast.loading("Chaning Availability...")
     const doctorData = await contract.getDoctor(docId);
     const meetingLink = doctorData.meetingLink;
     const isAvailable = doctorData.isAvailable;
@@ -71,11 +61,23 @@ const DoctorDetails = () => {
       const tx = await contract.changeAvailability(docAddress);
       await tx.wait();
       setAvailability(true);
+      toast.update(id, {
+        render: "Switched your availiability",
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
       navigateTo(`/${meetingLink}`);
     } else {
       const tx = await contract.changeAvailability(docAddress);
       await tx.wait();
       setAvailability(false);
+      toast.update(id, {
+        render: "Switched your availiability",
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
     }
   };
 
@@ -107,7 +109,6 @@ const DoctorDetails = () => {
     navigateTo("/updateprofile");
   };
   useEffect(() => {
-    // checkUserExists()
     getDoctorDetail();
   }, [docName, category, availability, rating]);
 
@@ -120,6 +121,8 @@ const DoctorDetails = () => {
           <h1 className="text-white h-[150px] nav-heading text-7xl text-center mt-6 text-gradient font-bold">
             Doctor's Portfolio
           </h1>
+
+          <ToastContainer />
 
           <div className="relative mx-auto grid grid-cols-1 mt-14 sm:mt-0 gap-[200px] lg:flex lg:justify-center">
             <div className="flex flex-col max-w-[600px] lg:max-w-[336px] ">
