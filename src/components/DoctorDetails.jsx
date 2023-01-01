@@ -72,32 +72,42 @@ const DoctorDetails = () => {
     const meetingLink = doctorData.meetingLink;
     const isAvailable = doctorData.isAvailable;
     const doctorAdd = doctorData.doctorWallet;
-    if (!isAvailable) {
-      const tx = await contract.changeAvailability(doctorAdd);
-      await tx.wait();
-      setAvailability(true);
+    try {
+      if (!isAvailable) {
+        const tx = await contract.changeAvailability(doctorAdd);
+        await tx.wait();
+        setAvailability(true);
+        toast.update(id, {
+          render: "Switched your availiability",
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+        });
+        navigateTo(`/${meetingLink}`, {
+          state: {
+            add: docAddress,
+          },
+        });
+      } else {
+        const tx = await contract.changeAvailability(doctorAdd);
+        await tx.wait();
+        setAvailability(false);
+        toast.update(id, {
+          render: "Switched your availiability",
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+        });
+      }
+    } catch (error) {
       toast.update(id, {
-        render: "Switched your availiability",
-        type: "success",
-        isLoading: false,
-        autoClose: 3000,
-      });
-      navigateTo(`/${meetingLink}`, {
-        state: {
-          add: docAddress,
-        },
-      });
-    } else {
-      const tx = await contract.changeAvailability(doctorAdd);
-      await tx.wait();
-      setAvailability(false);
-      toast.update(id, {
-        render: "Switched your availiability",
+        render: "User rejected transaction",
         type: "success",
         isLoading: false,
         autoClose: 3000,
       });
     }
+    
   };
 
   const getDoctorDetail = async () => {
@@ -115,7 +125,7 @@ const DoctorDetails = () => {
       }
       setDocName(doctorData.name);
       setCategory(doctorData.category);
-      setPrice(doctorData.price);
+      setPrice(ethers.utils.formatEther(doctorData.price));
       setDocAddress(doctorData.doctorWallet);
       setDescription(doctorData.description);
       setAvailability(doctorData.isAvailable);

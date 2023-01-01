@@ -46,24 +46,33 @@ const InitPage = () => {
 
   const submitNameForUser = async () => {
     const id = toast.loading("Adding user...")
-    
-    if (address) {
-      await contract.addUser(name);
-      toast.update(id, {
-        render: "Added User sucessfully",
-        type: "success",
-        isLoading: false,
-        autoClose: 3000,
-      });
- navigateTo("/home");
-    } else {
+    try {
+       if (address) {
+         await contract.addUser(name);
+         toast.update(id, {
+           render: "Added User sucessfully",
+           type: "success",
+           isLoading: false,
+           autoClose: 3000,
+         });
+         navigateTo("/home");
+       } else {
+         toast.update(id, {
+           render: "Connect your wallet first",
+           type: "error",
+           isLoading: false,
+           autoClose: 3000,
+         });
+       }
+    } catch (error) {
        toast.update(id, {
-         render: "Connect your wallet first",
+         render: "User Rejected Transaction",
          type: "error",
          isLoading: false,
          autoClose: 3000,
        });
     }
+   
   };
 
   useEffect(() => {

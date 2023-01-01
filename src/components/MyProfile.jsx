@@ -13,6 +13,7 @@ import people01 from "./../assets/people01.png";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useParams, useNavigate } from "react-router-dom";
+import { ethers } from "ethers";
 
 const MyProfile = () => {
   const [name, setName] = useState("");
@@ -56,45 +57,58 @@ const MyProfile = () => {
     const id = toast.loading("Adding you as a Doctor...")
 
 
-    if (docData.doctorWallet === "0x0000000000000000000000000000000000000000") {
-      let doctorInit = {
-        id: doccId.toNumber(),
-        name: name,
-        pfp: pfp,
-        category: category,
-        doctorWallet: address,
-        description: description,
-        price: price,
-        rating: rating,
-        meetingLink: meetingLink,
-        isAvailable: availability,
-      }
+    try {
+      if (docData.doctorWallet === "0x0000000000000000000000000000000000000000") {
+        let doctorInit = {
+          id: doccId.toNumber(),
+          name: name,
+          pfp: pfp,
+          category: category,
+          doctorWallet: address,
+          description: description,
+          price: ethers.utils.parseEther(price.toString()),
+          rating: rating,
+          meetingLink: meetingLink,
+          isAvailable: availability,
+        }
 
-      let tx = await contract.addDoctor(
-        doctorInit.name,
-        doctorInit.category,
-        doctorInit.description,
-        doctorInit.pfp,
-        doctorInit.price,
-        doctorInit.rating,
-        doctorInit.meetingLink,
-        doctorInit.isAvailable
-      );
-      toast.update(id, {
-           render: "Added Doctor sucessfully",
-           type: "success",
-        isLoading: false,
+        let tx = await contract.addDoctor(
+          doctorInit.name,
+          doctorInit.category,
+          doctorInit.description,
+          doctorInit.pfp,
+          doctorInit.price,
+          doctorInit.rating,
+          doctorInit.meetingLink,
+          doctorInit.isAvailable
+        );
+        toast.update(id, {
+          render: "Added Doctor sucessfully",
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+        });
+        navigateTo(`/doc/${doccId.toNumber()}`)
+      }
+       else {
+         toast.update(id, {
+           render: "You are already a registered doctor",
+           type: "error",
+           isLoading: false,
            autoClose: 3000,
          });
-      navigateTo(`/doc/${doccId.toNumber()}`)
-    } else {
+       }
+    }
+   
+    catch (e) {
        toast.update(id, {
-         render: "You are already a registered doctor",
+         render: "User Rejected Transaction",
          type: "error",
          isLoading: false,
          autoClose: 3000,
        });
     }
+  
   };
 
   useEffect(() => {

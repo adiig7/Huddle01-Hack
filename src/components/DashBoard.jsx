@@ -8,6 +8,7 @@ import star from "../assets/star.svg";
 import matic from "../assets/polygon-matic-logo.svg";
 import { CONTRACT_ADDRESS } from "../constants";
 import { useNavigate } from "react-router-dom";
+import { ethers } from "ethers";
 import { ToastContainer, toast } from "react-toastify";
 
 const DashBoard = () => {
@@ -87,8 +88,6 @@ const DashBoard = () => {
   };
 
   useEffect(() => {
-    // checkUserExists()
-
     getAllDocsData();
   }, []);
 
@@ -112,7 +111,7 @@ const DashBoard = () => {
                   image={people01}
                   name={doctor.name}
                   category={doctor.category}
-                  price={doctor.price}
+                  price={ethers.utils.formatEther(doctorData.price)}
                   matic={matic}
                   desc={doctor.description}
                   rate={doctor.rating}
