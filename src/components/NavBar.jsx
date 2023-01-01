@@ -50,7 +50,7 @@ const NavBar = () => {
   }
 
   const openMyMeeting = async () => {
-    navigateTo(`/doc/${meeting}`)
+    navigateTo(`/${meeting}`)
   }
 
   useEffect(() => {

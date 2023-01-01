@@ -2,11 +2,7 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-import"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol";
-
-
 contract HuddleHack{
-    using SafeMath for uint256;
 
     uint public doctorsId = 0;
     uint public usersId = 0;

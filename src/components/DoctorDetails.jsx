@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../style";
 import people01 from "../assets/people01.png";
 import ABI from "./../utils/abi";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, createSearchParams } from "react-router-dom";
 import { useAccount, useSigner, useContract, useProvider } from "wagmi";
 import { CONTRACT_ADDRESS } from "../constants";
 import { ethers } from "ethers";
@@ -45,20 +45,34 @@ const DoctorDetails = () => {
       //   value: parsed.toString()
       // })
       // await tx.wait()
-      navigateTo(`/${meetingLink}`);
+      navigateTo(`/${meetingLink}`, {
+        state: {
+          add: docAddress
+        }
+      });
     } else {
       console.log("doc not online");
     }
   };
+
+  const navigateToMyMeeting = async () => {
+    const doctorData = await contract.getDoctor(docId);
+    const meetingLink = doctorData.meetingLink;
+    navigateTo(`/${meetingLink}`, {
+      state: {
+        add: docAddress
+      }
+    });
+  }
 
   const changeAvailabilityAndNavigateDoctor = async () => {
     const id = toast.loading("Chaning Availability...")
     const doctorData = await contract.getDoctor(docId);
     const meetingLink = doctorData.meetingLink;
     const isAvailable = doctorData.isAvailable;
-    const docAddress = doctorData.doctorWallet;
+    const doctorAdd = doctorData.doctorWallet;
     if (!isAvailable) {
-      const tx = await contract.changeAvailability(docAddress);
+      const tx = await contract.changeAvailability(doctorAdd);
       await tx.wait();
       setAvailability(true);
       toast.update(id, {
@@ -67,9 +81,13 @@ const DoctorDetails = () => {
         isLoading: false,
         autoClose: 3000,
       });
-      navigateTo(`/${meetingLink}`);
+      navigateTo(`/${meetingLink}`, {
+        state: {
+          add: docAddress
+        }
+      });
     } else {
-      const tx = await contract.changeAvailability(docAddress);
+      const tx = await contract.changeAvailability(doctorAdd);
       await tx.wait();
       setAvailability(false);
       toast.update(id, {
@@ -207,14 +225,18 @@ const DoctorDetails = () => {
                 >
                   Start meeting
                 </button>
-              ) : (
-                <button
-                  className="text-cyan-900 py-3 px-4 font-bold mb-4 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
-                  onClick={navigateToUpdateProfile}
-                >
-                  Update My Profile
-                </button>
-              )}
+              ) : " "}
+              
+              {
+                (address === docAddress && availability === true)  ? (
+                  <button
+                    className="text-cyan-900 py-3 px-4 font-bold mb-4 mt-6 bg-blue-gradient rounded-[15px] outline-none ${styles} rounded-[10px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer select-none text-center "
+                    onClick={navigateToMyMeeting}
+                  >
+                    Start Your meeting
+                  </button>
+                ) : " "
+              }
             </div>
           </div>
         </div>

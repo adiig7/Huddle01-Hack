@@ -4,10 +4,11 @@ import ABI from "../utils/abi";
 import { CONTRACT_ADDRESS } from "../constants";
 import { useContract, useSigner, useProvider, useAccount } from "wagmi";
 import Rating from "@mui/material/Rating";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
 
 const MeetingPage = () => {
+  const location =useLocation()
   const [meetingLink, setMeetingLink] = useState("");
-  const { address } = useAccount();
   const provider = useProvider();
   const { data: signer } = useSigner();
   const contractAddress = CONTRACT_ADDRESS;
@@ -20,13 +21,13 @@ const MeetingPage = () => {
   });
 
   const getLink = async () => {
-    const docData = await contract.getDoctorByAddress(address);
+    const docData = await contract.getDoctorByAddress(location.state.add);
     setMeetingLink(docData.meetingLink);
-    console.log(docData);
   };
 
   const rate = async (ratig) => {
-    const docData = await contract.getDoctorByAddress(address);
+    const docData = await contract.getDoctorByAddress(location.state.add);
+    // const appointmentData = await contract.appointmentsForDoctor(address);
     const tx = await contract.rateDoctor(docData.doctorWallet, ratig)
     await tx.wait()
     console.log(tx)
