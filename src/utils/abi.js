@@ -654,4 +654,5 @@ const ABI = [{
 		"type": "function"
 	}
 ]
+
 export default ABI;
