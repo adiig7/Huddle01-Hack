@@ -110,7 +110,7 @@ const DashBoard = () => {
                   image={doc}
                   name={doctor.name}
                   category={doctor.category}
-                  price={ethers.utils.formatEther(doctorData.price)}
+                  price={ethers.utils.formatEther(doctor.price)}
                   matic={matic}
                   desc={doctor.description}
                   rate={doctor.rating}
