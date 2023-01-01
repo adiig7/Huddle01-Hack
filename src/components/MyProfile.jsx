@@ -133,6 +133,7 @@ const MyProfile = () => {
                       placeholder="Enter your Name..."
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
+                      required
                     ></input>
                     <label className="text-left block text-[17px] font-medium mb-2 text-white">
                       Description (min 150 chars)
@@ -142,6 +143,7 @@ const MyProfile = () => {
                       type="text"
                       placeholder="Enter your Description..."
                       onChange={(e) => setDescription(e.target.value)}
+                      required
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
                       minLength={150}
@@ -154,6 +156,7 @@ const MyProfile = () => {
                       type="number"
                       placeholder="Your chargeable fees..."
                       min={0}
+                      required
                       onChange={(e) => setPrice(e.target.value)}
                       className="m-auto outline-none mb-6 px-4 py-2 font-medium rounded-[10px] max-w-[300px] text-white bg-[#363952] sm:min-w-[230px] 
               sm:w-auto"
@@ -213,8 +216,8 @@ const MyProfile = () => {
                         </MenuItem>
                         <MenuItem value="Dentist">Dentist</MenuItem>
                         <MenuItem value="Gynecologist">Gynecologist</MenuItem>
-                        <MenuItem value="orthopedic surgeon">
-                          orthopedic surgeon
+                        <MenuItem value="Orthopedic Surgeon">
+                          Orthopedic Surgeon
                         </MenuItem>
                         <MenuItem value="Radiologist">Radiologist</MenuItem>
                         <MenuItem value="Neurologist">Neurologist</MenuItem>

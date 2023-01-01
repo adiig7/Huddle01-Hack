@@ -24,6 +24,7 @@ const DoctorCard = (props) => {
   });
 
   const checkAvailability = async () => {
+    console.log(docId.toNumber() + " docidddddddd");
     const doctorData = await contract.getDoctor(docId);
     const isAvailable = doctorData.isAvailable;
     setAvailability(isAvailable);
@@ -36,7 +37,7 @@ const DoctorCard = (props) => {
 
   useEffect(() => {
     checkAvailability();
-  }, [availability]);
+  }, []);
   return (
     <div
       className="flex justify-center w-full feedback-container relative z-[1] hover:pointer"

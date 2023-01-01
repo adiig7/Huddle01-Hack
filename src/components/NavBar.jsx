@@ -95,14 +95,6 @@ const NavBar = () => {
         My Profile
       </p> : ""}
 
-      {available ?
-        <p
-        className={`font-poppins mr-5 text-white font-normal cursor-pointer text-[16px] mr-10}`}
-        onClick={openMyMeeting}
-      >
-        My Meeting
-      </p> : ""}
-
       <ConnectButton showBalance={false} />
 
       <div className="sm:hidden flex flex-1 justify-end items-center">

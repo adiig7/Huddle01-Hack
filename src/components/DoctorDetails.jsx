@@ -36,22 +36,22 @@ const DoctorDetails = () => {
   const startMeetingWithDoc = async () => {
     const doctorData = await contract.getDoctor(docId);
     const meetingLink = doctorData.meetingLink;
-    const price = doctorData.price.toNumber();
-    // const parsed = ethers.utils.parseEther(price)
-    // console.log(typeof parsed);
+    const price = doctorData.price;
+    const priceInWei = ethers.utils.parseEther(price.toString())
+
     const isAvailable = doctorData.isAvailable;
     if (isAvailable) {
-      // const tx = await contract.addAppointment(docId, price, {
-      //   value: parsed.toString()
-      // })
-      // await tx.wait()
+      const tx = await contract.addAppointment(docId, priceInWei, {
+        value: priceInWei
+      })
+      await tx.wait()
       navigateTo(`/${meetingLink}`, {
         state: {
           add: docAddress
         }
       });
     } else {
-      console.log("doc not online");
+      toast.error("Doctor not available right now!", {autoClose: 3000})
     }
   };
 
