@@ -80,10 +80,10 @@ const MyProfile = () => {
         doctorInit.meetingLink,
         doctorInit.isAvailable
       );
-         toast.update(id, {
+      toast.update(id, {
            render: "Added Doctor sucessfully",
            type: "success",
-           isLoading: false,
+        isLoading: false,
            autoClose: 3000,
          });
       navigateTo(`/doc/${doccId.toNumber()}`)
