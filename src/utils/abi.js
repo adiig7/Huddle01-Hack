@@ -365,7 +365,7 @@ const ABI = [{
 					"type": "address"
 				}
 			],
-			"internalType": "struct HuddleHack.Appointment[]",
+			"internalType": "struct MedXhuddle.Appointment[]",
 			"name": "",
 			"type": "tuple[]"
 		}],
@@ -451,7 +451,7 @@ const ABI = [{
 					"type": "uint256"
 				}
 			],
-			"internalType": "struct HuddleHack.Doctor",
+			"internalType": "struct MedXhuddle.Doctor",
 			"name": "",
 			"type": "tuple"
 		}],
@@ -522,7 +522,7 @@ const ABI = [{
 					"type": "uint256"
 				}
 			],
-			"internalType": "struct HuddleHack.Doctor",
+			"internalType": "struct MedXhuddle.Doctor",
 			"name": "",
 			"type": "tuple"
 		}],
@@ -568,7 +568,7 @@ const ABI = [{
 					"type": "address"
 				}
 			],
-			"internalType": "struct HuddleHack.User",
+			"internalType": "struct MedXhuddle.User",
 			"name": "",
 			"type": "tuple"
 		}],
