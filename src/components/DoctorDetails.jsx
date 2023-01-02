@@ -35,7 +35,6 @@ const DoctorDetails = () => {
   });
 
   const startMeetingWithDoc = async () => {
-    
     const doctorData = await contract.getDoctor(docId);
     const meetingLink = doctorData.meetingLink;
     const price = doctorData.price;
@@ -52,7 +51,7 @@ const DoctorDetails = () => {
         },
       });
     } else {
-      toast.error("Doctor not available right now!", { autoClose: 3000 });
+      toast.error("Doctor not available right now! 😵", { autoClose: 3000 });
     }
   };
 
@@ -78,7 +77,7 @@ const DoctorDetails = () => {
         await tx.wait();
         setAvailability(true);
         toast.update(id, {
-          render: "Switched your availiability",
+          render: "Switched your availiability 😉",
           type: "success",
           isLoading: false,
           autoClose: 3000,
@@ -93,7 +92,7 @@ const DoctorDetails = () => {
         await tx.wait();
         setAvailability(false);
         toast.update(id, {
-          render: "Switched your availiability",
+          render: "Switched your availiability 😉",
           type: "success",
           isLoading: false,
           autoClose: 3000,
@@ -101,7 +100,7 @@ const DoctorDetails = () => {
       }
     } catch (error) {
       toast.update(id, {
-        render: "User rejected transaction",
+        render: "User rejected transaction 🤨",
         type: "success",
         isLoading: false,
         autoClose: 3000,
@@ -113,6 +112,10 @@ const DoctorDetails = () => {
   const getDoctorDetail = async () => {
     try {
       const doctorData = await contract.getDoctor(docId);
+      if (doctorData.doctorWallet === "0x0000000000000000000000000000000000000000") {
+        toast.error("Oops! Doctor doesn't exist 🫤")
+        navigateTo("/home")
+      }
       const numberOfRaters = doctorData.numberOfRaters.toNumber();
       const ratingTotal = doctorData.rating.toNumber();
       if (numberOfRaters !== 0) {
