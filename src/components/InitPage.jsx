@@ -40,7 +40,7 @@ const InitPage = () => {
       setIsUserRegistered(userRegistrationStatus);
       setWentThroughLaunch(true);
     } else {
-      notifyError("Connect your wallet first")
+      notifyError("Connect your wallet first 🙎‍♂️")
     }
   };
 
@@ -50,7 +50,7 @@ const InitPage = () => {
        if (address) {
          await contract.addUser(name);
          toast.update(id, {
-           render: "Added User sucessfully",
+           render: "Added User sucessfully 🫡",
            type: "success",
            isLoading: false,
            autoClose: 3000,
@@ -58,7 +58,7 @@ const InitPage = () => {
          navigateTo("/home");
        } else {
          toast.update(id, {
-           render: "Connect your wallet first",
+           render: "Connect your wallet first 🙎‍♂️",
            type: "error",
            isLoading: false,
            autoClose: 3000,
@@ -66,7 +66,7 @@ const InitPage = () => {
        }
     } catch (error) {
        toast.update(id, {
-         render: "User Rejected Transaction",
+         render: "User Rejected Transaction 🤨",
          type: "error",
          isLoading: false,
          autoClose: 3000,
