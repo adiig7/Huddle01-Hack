@@ -2,6 +2,11 @@
 
 <img width="100" height="100" src="https://user-images.githubusercontent.com/84569241/210165892-14d79a8b-f3b3-4950-a1da-09f47d207d77.svg">
 
+## Short Description 
+
+A decentralized web application where patients can consult the doctors online through one to one video calling using Huddle01, by paying the consulting fee of doctor in MATIC. The smart contract has been deployed on Polygon Mumbai Testnet and frontend has been done in ReactJs and using TailwindCSS.
+
+
 ## Backend
 
 ### Smart Contract Details
