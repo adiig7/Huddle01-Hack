@@ -38,11 +38,13 @@ const DashBoard = () => {
   const checkUserExists = async () => {
     if (address) {
       const userRegistrationStatus = await contract.checkUserExists();
+      console.log(userRegistrationStatus);
       if (!userRegistrationStatus) {
+        console.log("abcd");
         navigateTo("/auth");
       }
     } else {
-      navigateTo("/auth");
+      navigateTo("/home");
     }
   };
 
@@ -69,11 +71,11 @@ const DashBoard = () => {
       isAvailable: docData.isAvailable,
       numberOfRaters: docData.numberOfRaters.toNumber(),
     };
-    console.log(parsedData);
     return parsedData;
   };
 
   const getAllDocsData = async () => {
+    checkUserExists()
     const totalDocs = await getNumberOfDocs();
     const promises = [];
     console.log(totalDocs + " totalDocs");

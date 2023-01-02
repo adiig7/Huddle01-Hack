@@ -35,15 +35,15 @@ const DoctorDetails = () => {
   });
 
   const startMeetingWithDoc = async () => {
+    
     const doctorData = await contract.getDoctor(docId);
     const meetingLink = doctorData.meetingLink;
     const price = doctorData.price;
-    const priceInWei = ethers.utils.parseEther(price.toString());
-
     const isAvailable = doctorData.isAvailable;
     if (isAvailable) {
-      const tx = await contract.addAppointment(docId, priceInWei, {
-        value: priceInWei,
+      const tx = await contract.addAppointment(docId, price, {
+        value: price,
+
       });
       await tx.wait();
       navigateTo(`/${meetingLink}`, {
