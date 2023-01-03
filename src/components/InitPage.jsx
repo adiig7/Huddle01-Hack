@@ -55,7 +55,7 @@ const InitPage = () => {
            isLoading: false,
            autoClose: 3000,
          });
-         navigateTo("/home");
+         navigateTo('/home');
        } else {
          toast.update(id, {
            render: "Connect your wallet first 🙎‍♂️",
