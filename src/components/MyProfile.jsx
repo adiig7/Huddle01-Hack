@@ -88,7 +88,7 @@ const MyProfile = () => {
           isLoading: false,
           autoClose: 3000,
         });
-        navigateTo(`/doc/${doccId.toNumber()}`)
+        // navigateTo(`/doc/${doccId.toNumber()}`)
       }
        else {
          toast.update(id, {

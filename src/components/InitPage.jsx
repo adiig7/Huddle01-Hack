@@ -50,12 +50,12 @@ const InitPage = () => {
        if (address) {
          await contract.addUser(name);
          toast.update(id, {
-           render: "Added User sucessfully 🫡",
+           render: "Added User sucessfully, Launch Dapp now! 🫡",
            type: "success",
            isLoading: false,
            autoClose: 3000,
          });
-         navigateTo('/home');
+        //  navigateTo('/home');
        } else {
          toast.update(id, {
            render: "Connect your wallet first 🙎‍♂️",
