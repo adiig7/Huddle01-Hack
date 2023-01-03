@@ -6,6 +6,7 @@
 
 A decentralized web application where patients can consult the doctors online through one to one video calling using Huddle01, by paying the consulting fee of doctor in MATIC. The smart contract has been deployed on Polygon Mumbai Testnet and frontend has been done in ReactJs(Vite) and using TailwindCSS. A user, if is a doctor, can register himself as a doctor onto the platform and can change the availability of his presence for consulting. Huddle01's Iframe has been used in the medXhuddle for having the video call.
 
+
 ## Brief Details
 
 We thought of building something that could benefit the user economy, we had a strong tilt towards the healthcare sector. That's where we got the name for the Dapp 😉.
