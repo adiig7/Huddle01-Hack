@@ -82,11 +82,6 @@ const DoctorDetails = () => {
           isLoading: false,
           autoClose: 3000,
         });
-        navigateTo(`/${meetingLink}`, {
-          state: {
-            add: docAddress,
-          },
-        });
       } else {
         const tx = await contract.changeAvailability(doctorAdd);
         await tx.wait();
