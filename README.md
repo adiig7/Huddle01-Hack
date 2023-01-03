@@ -59,7 +59,7 @@ All the frontend code is available under [/src](https://github.com/adiig7/Huddle
  
  - Meeting Page
  
- ![2](https://user-images.githubusercontent.com/84569241/210166989-e01fce54-e502-4f0e-ad04-7635e0836d07.jpeg)
+![image](https://user-images.githubusercontent.com/54351909/210394402-beb13db1-9da8-4608-938a-8d9295f830dc.png)
 
  - Team Page
  
