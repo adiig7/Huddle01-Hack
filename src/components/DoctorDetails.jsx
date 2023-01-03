@@ -45,20 +45,20 @@ const DoctorDetails = () => {
 
       });
       await tx.wait();
-      navigateTo(`/${meetingLink}`, {
+      navigateTo(`/call/${meetingLink}`, {
         state: {
           add: docAddress,
         },
       });
     } else {
-      toast.error("Doctor not available right now! 😵", { autoClose: 3000 });
+      toast.error("Doctor not available right now! 😵", { autoClose: 5000 });
     }
   };
 
   const navigateToMyMeeting = async () => {
     const doctorData = await contract.getDoctor(docId);
     const meetingLink = doctorData.meetingLink;
-    navigateTo(`/${meetingLink}`, {
+    navigateTo(`/call/${meetingLink}`, {
       state: {
         add: docAddress,
       },
@@ -80,8 +80,9 @@ const DoctorDetails = () => {
           render: "Switched your availiability 😉",
           type: "success",
           isLoading: false,
-          autoClose: 3000,
-        });
+          autoClose: 5000,
+        });e:
+        cd
       } else {
         const tx = await contract.changeAvailability(doctorAdd);
         await tx.wait();
@@ -90,7 +91,7 @@ const DoctorDetails = () => {
           render: "Switched your availiability 😉",
           type: "success",
           isLoading: false,
-          autoClose: 3000,
+          autoClose: 5000,
         });
       }
     } catch (error) {
@@ -98,7 +99,7 @@ const DoctorDetails = () => {
         render: "User rejected transaction 🤨",
         type: "success",
         isLoading: false,
-        autoClose: 3000,
+        autoClose: 5000,
       });
     }
     

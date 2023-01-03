@@ -66,7 +66,7 @@ const DashBoard = () => {
       category: docData.category,
       address: docData.doctorWallet,
       description: docData.description,
-      price: docData.price.toNumber(),
+      price: docData.price,
       rating: docData.rating.toNumber(),
       isAvailable: docData.isAvailable,
       numberOfRaters: docData.numberOfRaters.toNumber(),

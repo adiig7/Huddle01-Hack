@@ -83,10 +83,10 @@ const MyProfile = () => {
           doctorInit.isAvailable
         );
         toast.update(id, {
-          render: "Added Doctor sucessfully",
+          render: "Added Doctor sucessfully, return to the home page",
           type: "success",
           isLoading: false,
-          autoClose: 3000,
+          autoClose: 5000,
         });
         // navigateTo(`/doc/${doccId.toNumber()}`)
       }
@@ -95,7 +95,7 @@ const MyProfile = () => {
            render: "You are already a registered doctor",
            type: "error",
            isLoading: false,
-           autoClose: 3000,
+           autoClose: 5000,
          });
        }
     }
@@ -105,7 +105,7 @@ const MyProfile = () => {
          render: "User Rejected Transaction",
          type: "error",
          isLoading: false,
-         autoClose: 3000,
+         autoClose: 5000,
        });
     }
   

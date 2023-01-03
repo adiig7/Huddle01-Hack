@@ -16,7 +16,7 @@ const InitPage = () => {
   const [wentThroughLaunch, setWentThroughLaunch] = useState(false);
 
   const notifyError = (message) => {
-    toast.error(message, { autoClose: 3000 });
+    toast.error(message, { autoClose: 5000 });
   };
 
   const navigateTo = useNavigate();
@@ -53,7 +53,7 @@ const InitPage = () => {
            render: "Added User sucessfully, Launch Dapp now! 🫡",
            type: "success",
            isLoading: false,
-           autoClose: 3000,
+           autoClose: 5000,
          });
         //  navigateTo('/home');
        } else {
@@ -61,7 +61,7 @@ const InitPage = () => {
            render: "Connect your wallet first 🙎‍♂️",
            type: "error",
            isLoading: false,
-           autoClose: 3000,
+           autoClose: 5000,
          });
        }
     } catch (error) {
@@ -69,7 +69,7 @@ const InitPage = () => {
          render: "User Rejected Transaction 🤨",
          type: "error",
          isLoading: false,
-         autoClose: 3000,
+         autoClose: 5000,
        });
     }
    

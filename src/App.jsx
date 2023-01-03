@@ -36,7 +36,7 @@ export default function App() {
             <Route path="/team" element={<Team />} />
             <Route path="/doc/:docId" element={<DoctorDetails />} />
             <Route path="/updateprofile" element={<MyProfile />} />
-            <Route path="/:meetingId" element={<MeetingPage />} />
+            <Route path="/call/:meetingId" element={<MeetingPage />} />
           </Routes>
         </div>
       </div>
