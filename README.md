@@ -4,8 +4,17 @@
 
 ## Description 
 
-A decentralized web application where patients can consult the doctors online through one to one video calling using Huddle01, by paying the consulting fee of doctor in MATIC. The smart contract has been deployed on Polygon Mumbai Testnet and frontend has been done in ReactJs and using TailwindCSS. A user, if is a doctor, can register himself as a doctor onto the platform and can change the availability of his presence for consulting. Huddle01's Iframe has been used in the medXhuddle for having the video call.
+A decentralized web application where patients can consult the doctors online through one to one video calling using Huddle01, by paying the consulting fee of doctor in MATIC. The smart contract has been deployed on Polygon Mumbai Testnet and frontend has been done in ReactJs(Vite) and using TailwindCSS. A user, if is a doctor, can register himself as a doctor onto the platform and can change the availability of his presence for consulting. Huddle01's Iframe has been used in the medXhuddle for having the video call.
 
+## Brief Details
+
+We thought of building something that could benefit the user economy, we had a strong tilt towards the healthcare sector. That's where we got the name for the Dapp 😉.
+We used Solidity to write the smart contract that contains the structs for the `User`, `Docotr` and `Appointment` and used Vite and TailwindCSS for the frontend. Yep! Tailwind is superrrrrr cooolll!!! We made several components for the different webpages of the Dapp. We assigned a meeting link for every doctor in the smart contract, the meeting links are generated using an npm package `random-string` for generating random strings while the user registers himself as a doctor. 
+
+The wallet connection has been handled by Rainbowkit and have also used Wagmi for different hooks that it provides. 
+
+The doctor can switch it's availability for the consulting, and if the doctor is available at a particular time and if a user starts an appointment with that doctor, he gets paid the consulting fees by the patient. On the meeting page, a user has an option to rate the doctor as well. If the doctor is not available at a particular time, the user cannot start a meeting with that doctor. 
+The user jumps onto to the same meeting link as of the doctor.
 
 ## Backend
 
