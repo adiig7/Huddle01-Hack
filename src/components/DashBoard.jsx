@@ -80,9 +80,9 @@ const DashBoard = () => {
     const promises = [];
     console.log(totalDocs + " totalDocs");
     for (let id = 0; id < totalDocs; id++) {
-      if (id === 3) {
-        return;
-      }
+      // if (id === 3) {
+      //   return;
+      // }
       const requestsPromise = getSingleDocData(id);
       promises.push(requestsPromise);
     }
