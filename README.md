@@ -24,7 +24,7 @@ Smart Contract Code: [medXhuddle](https://github.com/adiig7/Huddle01-Hack/blob/m
 
 ### Smart Contract Deployment
 The smart contract has been deployed on the Polygon Mumbai Testnet.
-Smart Contract Address: <b>0x024455fbb84968e14Be6418cbe6Ce847ce252e63</b>
+Smart Contract Address: <b>0xe4F09f0037Fb19d9360A0e4c966d7406Fc92e213</b>
 
 <br />
 
