@@ -79,7 +79,7 @@ const DashBoard = () => {
     const totalDocs = await getNumberOfDocs();
     const promises = [];
     console.log(totalDocs + " totalDocs");
-    for (let id = 0; id < totalDocs; id++) {
+    for (let id = 0; id < totalDocs-1; id++) {
       const requestsPromise = getSingleDocData(id);
       promises.push(requestsPromise);
     }
